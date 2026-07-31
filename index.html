@@ -242,6 +242,45 @@
   .foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
   .foot a{color:var(--muted);text-decoration:none}
   .foot a:hover{color:var(--orange)}
+
+  /* ---------- MOBILE FIXES ---------- */
+  .burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;padding:8px 12px;color:var(--white);font-size:1.2rem;line-height:1;cursor:pointer}
+  .burger:focus-visible{outline:3px solid var(--orange-hot)}
+  @media(max-width:820px){
+    section{padding:56px 0}
+    .hero{padding:48px 0 64px}
+    .hero-grid{gap:36px}
+    .hero p.lead{font-size:1.05rem}
+    .hero-stats{gap:22px;margin-top:36px}
+    .btn{padding:13px 26px;font-size:1.05rem;width:100%;text-align:center}
+    .btn-row{flex-direction:column}
+    .nav-cta{display:none}
+    .burger{display:block}
+    .nav-links{
+      display:none;position:absolute;top:68px;left:0;right:0;
+      flex-direction:column;gap:0;background:var(--bg-soft);
+      border-bottom:1px solid var(--line);padding:8px 0;
+    }
+    .nav-links.open{display:flex}
+    .nav-links a{padding:14px 24px;font-size:1.2rem;border-top:1px solid var(--line)}
+    .pb{width:min(230px,70%);padding:26px 16px 20px;transform:rotate(-3deg)}
+    .pb .pb-cta{font-size:1rem}
+    .pb .pb-url{font-size:.9rem;padding:5px 14px}
+    .bolt-bg{width:380px;right:-30%;top:auto;bottom:-10%}
+    .station-card{padding:28px 20px}
+    .station-card .big-bolt{width:80px}
+    .step{padding:26px 20px}
+    .price{padding:28px 20px}
+    .loc{padding:14px 14px;font-size:.92rem}
+    .foot{flex-direction:column;text-align:center}
+    summary{padding:16px 18px;font-size:.98rem}
+    details p{padding:0 18px 16px}
+  }
+  @media(max-width:380px){
+    .loc-grid{grid-template-columns:1fr}
+    h1{font-size:2.3rem}
+  }
+
 </style>
 </head>
 <body>
@@ -274,6 +313,7 @@
       <a href="#faq">FAQ</a>
     </nav>
     <a class="btn btn-primary nav-cta" href="#lokacije" style="padding:10px 24px;font-size:1rem">Nađi stanicu</a>
+    <button class="burger" aria-label="Meni" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
   </div>
 </header>
 
@@ -476,5 +516,8 @@
   </div>
 </footer>
 
+<script>
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('open')));
+</script>
 </body>
 </html>
