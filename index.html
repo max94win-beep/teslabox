@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="sr" xmlns:xlink="http://www.w3.org/1999/xlink">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -281,6 +281,13 @@
     h1{font-size:2.3rem}
   }
 
+
+  /* svg geometry fix (iOS Safari) */
+  .pb svg.bolt{height:auto;aspect-ratio:100/160;flex:none}
+  .station-card .big-bolt{height:auto;aspect-ratio:100/160}
+  .logo svg{aspect-ratio:100/160}
+  .pb .pb-logo{flex:none}
+
 </style>
 </head>
 <body>
@@ -304,7 +311,7 @@
 
 <header>
   <div class="container nav">
-    <a class="logo" href="#"><svg><use href="#bolt"/></svg>Tesla<b>Box</b></a>
+    <a class="logo" href="#"><svg viewBox="0 0 100 160" aria-hidden="true"><use href="#bolt" xlink:href="#bolt"/></svg>Tesla<b>Box</b></a>
     <nav class="nav-links">
       <a href="#kako">Kako funkcioniše</a>
       <a href="#cene">Cene</a>
@@ -319,7 +326,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <svg class="bolt-bg"><use href="#bolt"/></svg>
+  <svg class="bolt-bg" viewBox="0 0 100 160" aria-hidden="true"><use href="#bolt" xlink:href="#bolt"/></svg>
   <div class="container hero-grid">
     <div>
       <h1>Prazna baterija?<br><span class="accent">Iznajmi powerbank!</span></h1>
@@ -337,7 +344,7 @@
     <div>
       <div class="pb">
         <div class="pb-logo">TESLA<b>BOX</b></div>
-        <svg class="bolt"><use href="#bolt"/></svg>
+        <svg class="bolt" viewBox="0 0 100 160" aria-hidden="true"><use href="#bolt" xlink:href="#bolt"/></svg>
         <div>
           <div class="pb-cta">Prazna baterija?<br><span class="accent">Iznajmi</span> powerbank!</div>
           <div class="pb-url">teslabox.rs</div>
@@ -428,14 +435,14 @@
       <p>TeslaBox stanice su tamo gde ti se telefon najčešće prazni.</p>
     </div>
     <div class="loc-grid">
-      <div class="loc"><svg><use href="#pin"/></svg>Kafići i restorani</div>
-      <div class="loc"><svg><use href="#pin"/></svg>Tržni centri</div>
-      <div class="loc"><svg><use href="#pin"/></svg>Klubovi i barovi</div>
-      <div class="loc"><svg><use href="#pin"/></svg>Hoteli</div>
-      <div class="loc"><svg><use href="#pin"/></svg>Aerodrom i stanice</div>
-      <div class="loc"><svg><use href="#pin"/></svg>Teretane</div>
-      <div class="loc"><svg><use href="#pin"/></svg>Fakulteti</div>
-      <div class="loc"><svg><use href="#pin"/></svg>Festivali i događaji</div>
+      <div class="loc"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#pin" xlink:href="#pin"/></svg>Kafići i restorani</div>
+      <div class="loc"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#pin" xlink:href="#pin"/></svg>Tržni centri</div>
+      <div class="loc"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#pin" xlink:href="#pin"/></svg>Klubovi i barovi</div>
+      <div class="loc"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#pin" xlink:href="#pin"/></svg>Hoteli</div>
+      <div class="loc"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#pin" xlink:href="#pin"/></svg>Aerodrom i stanice</div>
+      <div class="loc"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#pin" xlink:href="#pin"/></svg>Teretane</div>
+      <div class="loc"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#pin" xlink:href="#pin"/></svg>Fakulteti</div>
+      <div class="loc"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#pin" xlink:href="#pin"/></svg>Festivali i događaji</div>
     </div>
     <div style="text-align:center;margin-top:40px">
       <a class="btn btn-primary" href="#">Otvori mapu stanica</a>
@@ -458,7 +465,7 @@
       <a class="btn btn-primary" href="mailto:partneri@teslabox.rs">Postani partner</a>
     </div>
     <div class="station-card">
-      <svg class="big-bolt"><use href="#bolt"/></svg>
+      <svg class="big-bolt" viewBox="0 0 100 160" aria-hidden="true"><use href="#bolt" xlink:href="#bolt"/></svg>
       <h3 style="margin-top:20px">Stanica zauzima manje od pola kvadrata</h3>
       <p>Kompaktna, svetli u mraku i uklapa se u svaki enterijer. Struja koju troši — kao jedna sijalica.</p>
     </div>
@@ -506,7 +513,7 @@
 
 <footer>
   <div class="container foot">
-    <a class="logo" href="#" style="font-size:1.2rem"><svg style="width:16px;height:16px"><use href="#bolt"/></svg>Tesla<b>Box</b></a>
+    <a class="logo" href="#" style="font-size:1.2rem"><svg viewBox="0 0 100 160" style="width:16px;height:16px" aria-hidden="true"><use href="#bolt" xlink:href="#bolt"/></svg>Tesla<b>Box</b></a>
     <div>
       <a href="mailto:info@teslabox.rs">info@teslabox.rs</a> · 
       <a href="#">Uslovi korišćenja</a> · 
