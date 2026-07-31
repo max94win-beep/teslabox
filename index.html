@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeslaBox — Iznajmi powerbank u Srbiji | teslabox.rs</title>
+<meta name="description" content="Prazna baterija? Iznajmi powerbank na najbližoj TeslaBox stanici. Uzmi na jednoj, vrati na bilo kojoj stanici u Srbiji.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,700;1,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0B0D;
+    --bg-soft:#141417;
+    --card:#1A1A1F;
+    --line:#2A2A31;
+    --orange:#FF7A1A;
+    --orange-hot:#FF9A3D;
+    --white:#F5F4F2;
+    --muted:#9C9CA6;
+    --radius:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--white);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.btn,.nav-links a,.tag{
+    font-family:'Barlow Condensed',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.02em;
+  }
+  h1{font-weight:800;font-style:italic;font-size:clamp(2.6rem,7vw,5.2rem);line-height:.95}
+  h2{font-weight:700;font-style:italic;font-size:clamp(1.9rem,4.5vw,3rem);line-height:1}
+  h3{font-weight:700;font-size:1.35rem}
+  .accent{color:var(--orange)}
+  .container{max-width:1120px;margin:0 auto;padding:0 24px}
+  section{padding:88px 0}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,11,13,.85);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-style:italic;font-size:1.6rem;text-transform:uppercase;text-decoration:none;color:var(--white);display:flex;align-items:center;gap:8px}
+  .logo b{color:var(--orange);font-weight:800}
+  .logo svg{width:20px;height:20px}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{color:var(--muted);text-decoration:none;font-weight:600;font-size:1.05rem;transition:color .2s}
+  .nav-links a:hover,.nav-links a:focus-visible{color:var(--orange)}
+  .nav-cta{display:inline-block}
+  @media(max-width:820px){.nav-links{display:none}}
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display:inline-block;
+    padding:14px 32px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:1.15rem;
+    text-decoration:none;
+    transition:transform .15s ease, box-shadow .2s;
+    cursor:pointer;
+    border:none;
+  }
+  .btn:focus-visible{outline:3px solid var(--orange-hot);outline-offset:3px}
+  .btn-primary{
+    background:linear-gradient(180deg,var(--orange-hot),var(--orange));
+    color:#141414;
+    box-shadow:0 6px 28px rgba(255,122,26,.35);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(255,122,26,.5)}
+  .btn-ghost{
+    border:1.5px solid var(--orange);
+    color:var(--orange);
+    background:transparent;
+  }
+  .btn-ghost:hover{background:rgba(255,122,26,.08)}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:96px 0 110px;
+    overflow:hidden;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  @media(max-width:820px){.hero-grid{grid-template-columns:1fr}}
+  .hero p.lead{color:var(--muted);font-size:1.15rem;max-width:460px;margin:22px 0 34px}
+  .hero .btn-row{display:flex;gap:16px;flex-wrap:wrap}
+  .hero-stats{display:flex;gap:40px;margin-top:48px;flex-wrap:wrap}
+  .hero-stats .stat b{display:block;font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:2rem;color:var(--orange)}
+  .hero-stats .stat span{color:var(--muted);font-size:.9rem}
+
+  /* bolt backdrop */
+  .bolt-bg{
+    position:absolute;right:-6%;top:-12%;
+    width:620px;height:620px;
+    opacity:.14;
+    filter:blur(2px);
+    pointer-events:none;
+    animation:pulse 4.5s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:.10}50%{opacity:.2}}
+  @media(prefers-reduced-motion:reduce){
+    .bolt-bg{animation:none}
+    .btn-primary:hover{transform:none}
+  }
+
+  /* powerbank mock */
+  .pb{
+    position:relative;
+    width:min(300px,80%);
+    aspect-ratio:1/2;
+    margin:0 auto;
+    background:linear-gradient(160deg,#1E1E23,#0E0E11);
+    border:1px solid var(--line);
+    border-radius:28px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-between;
+    padding:36px 20px 28px;
+    box-shadow:0 30px 80px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.06);
+    transform:rotate(-4deg);
+  }
+  .pb .pb-logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-style:italic;font-size:1.4rem;letter-spacing:.05em}
+  .pb .pb-logo b{color:var(--orange)}
+  .pb svg.bolt{width:56%;filter:drop-shadow(0 0 26px rgba(255,122,26,.65))}
+  .pb .pb-cta{
+    font-family:'Barlow Condensed',sans-serif;font-weight:700;font-style:italic;
+    text-transform:uppercase;text-align:center;font-size:1.15rem;line-height:1.15;
+  }
+  .pb .pb-url{
+    margin-top:12px;border:1.5px solid var(--orange);border-radius:10px;
+    padding:6px 18px;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1rem;
+    color:var(--white);
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .sec-head{max-width:640px;margin-bottom:52px}
+  .tag{
+    display:inline-block;color:var(--orange);font-weight:700;font-size:1rem;
+    border:1px solid rgba(255,122,26,.4);border-radius:999px;padding:4px 16px;margin-bottom:16px;
+  }
+  .sec-head p{color:var(--muted);margin-top:14px}
+
+  /* ---------- STEPS ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:820px){.steps{grid-template-columns:1fr}}
+  .step{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:32px 26px;position:relative;overflow:hidden;
+  }
+  .step .n{
+    font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;
+    font-size:3.4rem;color:transparent;-webkit-text-stroke:1.5px var(--orange);
+    line-height:1;display:block;margin-bottom:14px;
+  }
+  .step p{color:var(--muted);margin-top:8px;font-size:.98rem}
+
+  /* ---------- PRICING ---------- */
+  .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:820px){.prices{grid-template-columns:1fr}}
+  .price{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:34px 28px;text-align:center;transition:border-color .2s, transform .2s;
+  }
+  .price:hover{border-color:var(--orange);transform:translateY(-4px)}
+  .price .amount{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:2.6rem;color:var(--orange);display:block;margin:10px 0 4px}
+  .price .per{color:var(--muted);font-size:.9rem}
+  .price ul{list-style:none;margin-top:20px;text-align:left}
+  .price li{color:var(--muted);font-size:.95rem;padding:6px 0;border-top:1px dashed var(--line)}
+  .price li::before{content:"⚡ ";color:var(--orange)}
+  .fineprint{color:var(--muted);font-size:.85rem;margin-top:24px;text-align:center}
+
+  /* ---------- LOCATIONS ---------- */
+  .loc-band{
+    background:var(--bg-soft);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .loc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
+  @media(max-width:820px){.loc-grid{grid-template-columns:repeat(2,1fr)}}
+  .loc{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:18px 20px;font-weight:600;display:flex;align-items:center;gap:10px;
+  }
+  .loc svg{width:16px;height:16px;flex:none}
+
+  /* ---------- PARTNERS ---------- */
+  .partner-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  @media(max-width:820px){.partner-grid{grid-template-columns:1fr}}
+  .benefits{list-style:none;margin:26px 0 34px}
+  .benefits li{
+    padding:14px 0 14px 38px;position:relative;color:var(--muted);
+    border-bottom:1px solid var(--line);
+  }
+  .benefits li strong{color:var(--white)}
+  .benefits li::before{
+    content:"";position:absolute;left:0;top:18px;width:22px;height:22px;
+    background:radial-gradient(circle at 35% 35%,var(--orange-hot),var(--orange));
+    border-radius:50%;
+    clip-path:polygon(50% 0,20% 55%,45% 55%,40% 100%,80% 40%,52% 40%);
+  }
+  .station-card{
+    background:linear-gradient(160deg,#1B1B20,#101013);
+    border:1px solid var(--line);border-radius:24px;padding:40px;text-align:center;
+  }
+  .station-card .big-bolt{width:120px;filter:drop-shadow(0 0 34px rgba(255,122,26,.5))}
+  .station-card p{color:var(--muted);margin-top:16px}
+
+  /* ---------- FAQ ---------- */
+  details{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    margin-bottom:12px;overflow:hidden;
+  }
+  summary{
+    cursor:pointer;padding:20px 24px;font-weight:600;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--orange);font-size:1.5rem;font-weight:400;transition:transform .2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{padding:0 24px 20px;color:var(--muted);font-size:.97rem}
+
+  /* ---------- CTA / FOOTER ---------- */
+  .final-cta{
+    text-align:center;
+    background:
+      radial-gradient(ellipse 60% 80% at 50% 120%, rgba(255,122,26,.18), transparent),
+      var(--bg);
+  }
+  .final-cta p{color:var(--muted);max-width:480px;margin:18px auto 34px}
+  footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:.9rem}
+  .foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+  .foot a{color:var(--muted);text-decoration:none}
+  .foot a:hover{color:var(--orange)}
+</style>
+</head>
+<body>
+
+<!-- bolt symbol reused -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="boltGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFB25E"/>
+      <stop offset=".5" stop-color="#FF7A1A"/>
+      <stop offset="1" stop-color="#E85D00"/>
+    </linearGradient>
+    <symbol id="bolt" viewBox="0 0 100 160">
+      <path d="M62 2 14 92h30l-8 66 52-98H56L62 2z" fill="url(#boltGrad)"/>
+    </symbol>
+    <symbol id="pin" viewBox="0 0 24 24">
+      <path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z" fill="#FF7A1A"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#"><svg><use href="#bolt"/></svg>Tesla<b>Box</b></a>
+    <nav class="nav-links">
+      <a href="#kako">Kako funkcioniše</a>
+      <a href="#cene">Cene</a>
+      <a href="#lokacije">Lokacije</a>
+      <a href="#partneri">Za partnere</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-primary nav-cta" href="#lokacije" style="padding:10px 24px;font-size:1rem">Nađi stanicu</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="bolt-bg"><use href="#bolt"/></svg>
+  <div class="container hero-grid">
+    <div>
+      <h1>Prazna baterija?<br><span class="accent">Iznajmi powerbank!</span></h1>
+      <p class="lead">Uzmi powerbank na najbližoj TeslaBox stanici i puni telefon u pokretu. Vrati ga na bilo kojoj stanici u gradu — kad god ti odgovara.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#lokacije">Nađi stanicu</a>
+        <a class="btn btn-ghost" href="#kako">Kako funkcioniše</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b>3</b><span>kabla u svakom powerbanku</span></div>
+        <div class="stat"><b>24/7</b><span>stanice uvek dostupne</span></div>
+        <div class="stat"><b>60 s</b><span>od skeniranja do punjenja</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="pb">
+        <div class="pb-logo">TESLA<b>BOX</b></div>
+        <svg class="bolt"><use href="#bolt"/></svg>
+        <div>
+          <div class="pb-cta">Prazna baterija?<br><span class="accent">Iznajmi</span> powerbank!</div>
+          <div class="pb-url">teslabox.rs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KAKO FUNKCIONIŠE -->
+<section id="kako">
+  <div class="container">
+    <div class="sec-head">
+      <span class="tag">Jednostavno</span>
+      <h2>Kako <span class="accent">funkcioniše</span></h2>
+      <p>Bez registracije na šalteru, bez čekanja. Tri koraka i telefon se puni.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="n">01</span>
+        <h3>Skeniraj QR kod</h3>
+        <p>Pronađi TeslaBox stanicu, skeniraj QR kod telefonom i plati karticom ili preko aplikacije.</p>
+      </div>
+      <div class="step">
+        <span class="n">02</span>
+        <h3>Uzmi powerbank</h3>
+        <p>Stanica automatski otključava powerbank. Ugrađeni kablovi: USB-C, Lightning i Micro-USB — puni bilo koji telefon.</p>
+      </div>
+      <div class="step">
+        <span class="n">03</span>
+        <h3>Vrati bilo gde</h3>
+        <p>Vrati powerbank na bilo koju TeslaBox stanicu u gradu. Uzmi u kafiću — vrati u tržnom centru.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CENE -->
+<section id="cene" style="padding-top:0">
+  <div class="container">
+    <div class="sec-head">
+      <span class="tag">Transparentno</span>
+      <h2>Koliko <span class="accent">košta</span></h2>
+      <p>Plaćaš samo vreme korišćenja. Bez pretplate, bez skrivenih troškova.</p>
+    </div>
+    <div class="prices">
+      <div class="price">
+        <h3>Start</h3>
+        <span class="amount">99 RSD</span>
+        <span class="per">prvih 30 minuta</span>
+        <ul>
+          <li>Brzo dopunjavanje u pokretu</li>
+          <li>Sva tri kabla uključena</li>
+          <li>Plaćanje karticom</li>
+        </ul>
+      </div>
+      <div class="price">
+        <h3>Sat</h3>
+        <span class="amount">149 RSD</span>
+        <span class="per">po satu</span>
+        <ul>
+          <li>Idealno za izlazak ili sastanak</li>
+          <li>Vraćanje na bilo kojoj stanici</li>
+          <li>Naplata po minutu posle prvog sata</li>
+        </ul>
+      </div>
+      <div class="price">
+        <h3>Dan</h3>
+        <span class="amount">499 RSD</span>
+        <span class="per">maksimum za 24 h</span>
+        <ul>
+          <li>Dnevni limit — ne plaćaš više</li>
+          <li>Za putovanja i festivale</li>
+          <li>Depozit se vraća pri povratku</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fineprint">* Prikazane cene su informativne. Aktuelne cene vidiš na stanici pre iznajmljivanja.</p>
+  </div>
+</section>
+
+<!-- LOKACIJE -->
+<section id="lokacije" class="loc-band">
+  <div class="container">
+    <div class="sec-head">
+      <span class="tag">Uvek u blizini</span>
+      <h2>Gde nas <span class="accent">nalaziš</span></h2>
+      <p>TeslaBox stanice su tamo gde ti se telefon najčešće prazni.</p>
+    </div>
+    <div class="loc-grid">
+      <div class="loc"><svg><use href="#pin"/></svg>Kafići i restorani</div>
+      <div class="loc"><svg><use href="#pin"/></svg>Tržni centri</div>
+      <div class="loc"><svg><use href="#pin"/></svg>Klubovi i barovi</div>
+      <div class="loc"><svg><use href="#pin"/></svg>Hoteli</div>
+      <div class="loc"><svg><use href="#pin"/></svg>Aerodrom i stanice</div>
+      <div class="loc"><svg><use href="#pin"/></svg>Teretane</div>
+      <div class="loc"><svg><use href="#pin"/></svg>Fakulteti</div>
+      <div class="loc"><svg><use href="#pin"/></svg>Festivali i događaji</div>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <a class="btn btn-primary" href="#">Otvori mapu stanica</a>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERI -->
+<section id="partneri">
+  <div class="container partner-grid">
+    <div>
+      <span class="tag">Za lokale</span>
+      <h2>Postavi stanicu u <span class="accent">svoj lokal</span></h2>
+      <ul class="benefits">
+        <li><strong>Besplatna instalacija.</strong> Mi donosimo, montiramo i održavamo stanicu — tebe ne košta ništa.</li>
+        <li><strong>Gosti ostaju duže.</strong> Telefon na punjenju znači još jedno piće i još jednu narudžbinu.</li>
+        <li><strong>Novi gosti iz aplikacije.</strong> Tvoj lokal se pojavljuje na mapi stanica — ljudi dolaze kod tebe da uzmu ili vrate powerbank.</li>
+        <li><strong>Bez posla za osoblje.</strong> Sve je automatizovano: iznajmljivanje, naplata i vraćanje idu bez konobara.</li>
+      </ul>
+      <a class="btn btn-primary" href="mailto:partneri@teslabox.rs">Postani partner</a>
+    </div>
+    <div class="station-card">
+      <svg class="big-bolt"><use href="#bolt"/></svg>
+      <h3 style="margin-top:20px">Stanica zauzima manje od pola kvadrata</h3>
+      <p>Kompaktna, svetli u mraku i uklapa se u svaki enterijer. Struja koju troši — kao jedna sijalica.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding-top:0">
+  <div class="container" style="max-width:760px">
+    <div class="sec-head">
+      <span class="tag">Pitanja</span>
+      <h2>Često <span class="accent">postavljana pitanja</span></h2>
+    </div>
+    <details>
+      <summary>Da li mi treba aplikacija?</summary>
+      <p>Ne obavezno — powerbank možeš iznajmiti skeniranjem QR koda i plaćanjem karticom. Aplikacija ti olakšava pronalaženje stanica i praćenje najma.</p>
+    </details>
+    <details>
+      <summary>Koje telefone powerbank puni?</summary>
+      <p>Sve. Svaki TeslaBox powerbank ima tri ugrađena kabla: USB-C, Lightning i Micro-USB.</p>
+    </details>
+    <details>
+      <summary>Šta ako ne vratim powerbank?</summary>
+      <p>Posle isteka maksimalnog perioda najma naplaćuje se puna cena uređaja i powerbank postaje tvoj. Iznos vidiš pre iznajmljivanja.</p>
+    </details>
+    <details>
+      <summary>Mogu li da vratim powerbank na drugoj stanici?</summary>
+      <p>Da — to je poenta. Uzmi na jednoj stanici, vrati na bilo kojoj drugoj TeslaBox stanici.</p>
+    </details>
+    <details>
+      <summary>Kako se plaća?</summary>
+      <p>Isključivo bezgotovinski: platnom karticom, Apple Pay ili Google Pay.</p>
+    </details>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>Telefon na <span class="accent">1%</span>?<br>Stanica je bliže nego što misliš.</h2>
+    <p>Pronađi najbližu TeslaBox stanicu i puni telefon dok živiš svoj dan.</p>
+    <a class="btn btn-primary" href="#lokacije">Nađi stanicu</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <a class="logo" href="#" style="font-size:1.2rem"><svg style="width:16px;height:16px"><use href="#bolt"/></svg>Tesla<b>Box</b></a>
+    <div>
+      <a href="mailto:info@teslabox.rs">info@teslabox.rs</a> · 
+      <a href="#">Uslovi korišćenja</a> · 
+      <a href="#">Politika privatnosti</a>
+    </div>
+    <div>© 2026 TeslaBox · teslabox.rs</div>
+  </div>
+</footer>
+
+</body>
+</html>
