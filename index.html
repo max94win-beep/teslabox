@@ -297,6 +297,16 @@
   }
   @media(max-width:820px){.pb-img{width:min(250px,72%)}}
 
+
+  .nav-phone{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;color:var(--white);text-decoration:none;letter-spacing:.03em;margin-right:14px}
+  .nav-phone:hover{color:var(--orange)}
+  @media(max-width:820px){.nav-phone{display:none}}
+  .mob-contact{display:none}
+  @media(max-width:820px){
+    .mob-contact{display:block;padding:14px 24px;border-top:1px solid var(--line)}
+    .mob-contact a{color:var(--orange)!important;font-weight:700}
+  }
+
 </style>
 </head>
 <body>
@@ -311,7 +321,9 @@
       <a href="#lokacije">Lokacije</a>
       <a href="#partneri">Za partnere</a>
       <a href="#faq">FAQ</a>
+      <div class="mob-contact"><a href="tel:+381605054030">+381 60 505 4030</a></div>
     </nav>
+    <a class="nav-phone" href="tel:+381605054030">+381 60 505 4030</a>
     <a class="btn btn-primary nav-cta" href="#lokacije" style="padding:10px 24px;font-size:1rem">Nađi stanicu</a>
     <button class="burger" aria-label="Meni" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
   </div>
@@ -448,7 +460,8 @@
         <li><strong>Novi gosti iz aplikacije.</strong> Tvoj lokal se pojavljuje na mapi stanica — ljudi dolaze kod tebe da uzmu ili vrate powerbank.</li>
         <li><strong>Bez posla za osoblje.</strong> Sve je automatizovano: iznajmljivanje, naplata i vraćanje idu bez konobara.</li>
       </ul>
-      <a class="btn btn-primary" href="mailto:partneri@teslabox.rs">Postani partner</a>
+      <a class="btn btn-primary" href="mailto:sales@teslabox.com">Postani partner</a>
+      <p style="margin-top:16px;color:var(--muted)">Pozovi nas: <a href="tel:+381605054030" style="color:var(--orange);text-decoration:none;font-weight:600">+381 60 505 4030</a></p>
     </div>
     <div class="station-card">
       <svg class="big-bolt" viewBox="0 0 100 160" aria-hidden="true"><path d="M62 2 14 92h30l-8 66 52-98H56L62 2z" fill="#FF7A1A"/></svg>
@@ -501,7 +514,7 @@
   <div class="container foot">
     <a class="logo" href="#" style="font-size:1.2rem"><svg viewBox="0 0 100 160" style="width:16px;height:16px" aria-hidden="true"><path d="M62 2 14 92h30l-8 66 52-98H56L62 2z" fill="#FF7A1A"/></svg>Tesla<b>Box</b></a>
     <div>
-      <a href="mailto:info@teslabox.rs">info@teslabox.rs</a> · 
+      <a href="tel:+381605054030">+381 60 505 4030</a> · <a href="mailto:sales@teslabox.com">sales@teslabox.com</a> · 
       <a href="#">Uslovi korišćenja</a> · 
       <a href="#">Politika privatnosti</a>
     </div>
