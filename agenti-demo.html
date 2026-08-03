@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="sr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>Агентская программа — TeslaBox (демо)</title>
-<meta name="description" content="Демо-макет агентской страницы TeslaBox по модели Energy Monster">
+<title>Postani agent — TeslaBox (demo)</title>
+<meta name="description" content="Agentski program TeslaBox — zaradi na iznajmljivanju powerbank-ova">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -19,7 +19,7 @@
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--white);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
-  h1,h2,h3,.btn,.nav-links a,.tag{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.02em}
+  h1,h2,h3,.btn,.tag{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.02em}
   h1{font-weight:800;font-style:italic;font-size:clamp(2.4rem,6.5vw,4.8rem);line-height:.95}
   h2{font-weight:700;font-style:italic;font-size:clamp(1.9rem,4.5vw,3rem);line-height:1}
   h3{font-weight:700;font-size:1.3rem}
@@ -42,11 +42,9 @@
   .btn-ghost:hover{background:rgba(255,122,26,.08)}
   .btn-sm{padding:10px 22px;font-size:1rem}
 
-  /* promo strip */
   .promo-strip{background:linear-gradient(90deg,#2a1503,#3d1e02);border-bottom:1px solid rgba(255,122,26,.4);padding:10px 0;text-align:center;font-size:.95rem}
   .promo-strip b{color:var(--orange-hot)}
 
-  /* hero */
   .hero{position:relative;padding:88px 0 96px;overflow:hidden}
   .hero p.lead{color:var(--muted);font-size:1.15rem;max-width:560px;margin:22px 0 34px}
   .hero-stats{display:flex;gap:44px;margin-top:52px;flex-wrap:wrap}
@@ -56,7 +54,6 @@
   @keyframes pulse{0%,100%{opacity:.10}50%{opacity:.2}}
   @media(prefers-reduced-motion:reduce){.bolt-bg{animation:none}.btn-primary:hover{transform:none}}
 
-  /* cards */
   .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
@@ -67,14 +64,18 @@
   .card p{color:var(--muted);font-size:.95rem}
   .card .big{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:2.4rem;color:var(--orange);line-height:1;display:block;margin-bottom:8px}
 
-  /* deals */
+  /* photo advantage cards (EM style) */
+  .photo-card{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);min-height:300px;display:flex;align-items:flex-end;background:linear-gradient(135deg,#1A1A1F,#26262e)}
+  .photo-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.8) saturate(.9)}
+  .photo-card .cap{position:relative;z-index:2;width:100%;padding:18px 22px;background:linear-gradient(0deg,rgba(0,0,0,.82),rgba(0,0,0,0));font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:1.25rem;letter-spacing:.02em}
+  .photo-card .cap b{color:var(--orange)}
+
   .deal{position:relative;background:var(--card);border:1px solid rgba(255,122,26,.45);border-radius:var(--radius);padding:30px 24px;text-align:center;overflow:hidden}
-  .deal .gift{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:2.6rem;line-height:1;color:var(--white)}
+  .deal .gift{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:2.6rem;line-height:1}
   .deal .gift b{color:var(--orange)}
   .deal .note{color:var(--muted);font-size:.9rem;margin-top:8px}
   .deal .ribbon{position:absolute;top:14px;right:-38px;transform:rotate(35deg);background:var(--orange);color:#141414;font-weight:700;font-size:.72rem;padding:3px 42px;letter-spacing:.06em;text-transform:uppercase}
 
-  /* plans */
   .plan{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px}
   .plan.hot{border-color:var(--orange)}
   .plan .tag{font-size:.8rem;color:var(--orange);font-weight:700;margin-bottom:6px}
@@ -84,33 +85,28 @@
   .plan li{color:var(--muted);font-size:.93rem;padding:6px 0;border-top:1px solid var(--line)}
   .plan li:first-child{border-top:none}
 
-  /* products */
   .prod{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;text-align:center}
-  .prod .slots{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:3rem;color:var(--white);line-height:1}
+  .prod .slots{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:3rem;line-height:1}
   .prod .slots small{font-size:1.1rem;color:var(--muted);font-style:normal;font-weight:600}
   .prod p{color:var(--muted);font-size:.9rem;margin:8px 0 14px;min-height:44px}
   .prod .old{color:var(--muted);text-decoration:line-through;font-size:1rem}
   .prod .price{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:1.9rem;color:var(--orange)}
 
-  /* steps */
   .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:st}
   @media(max-width:900px){.steps{grid-template-columns:1fr;max-width:460px}}
-  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 18px;position:relative;counter-increment:st}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 18px;counter-increment:st}
   .step::before{content:counter(st,decimal-leading-zero);font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:1.6rem;color:var(--orange);display:block;margin-bottom:6px}
-  .step p{font-size:.92rem;color:var(--white)}
+  .step p{font-size:.92rem}
 
-  /* faq */
   details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:12px;padding:0 24px}
   summary{cursor:pointer;padding:20px 0;font-weight:600;list-style:none;position:relative;padding-right:32px}
   summary::after{content:"+";position:absolute;right:0;top:16px;color:var(--orange);font-size:1.5rem;font-weight:400}
   details[open] summary::after{content:"–"}
   details p{color:var(--muted);padding:0 0 20px;font-size:.95rem}
 
-  /* form stub */
   .form-stub{background:var(--card);border:1px dashed var(--line);border-radius:var(--radius);padding:36px;text-align:center}
   .form-stub p{color:var(--muted);margin-bottom:20px}
 
-  /* floating consult */
   .float-cta{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;flex-direction:column;align-items:center;gap:4px;background:linear-gradient(180deg,var(--orange-hot),var(--orange));color:#141414;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:.95rem;padding:14px 16px;border-radius:14px;box-shadow:0 8px 30px rgba(255,122,26,.45)}
   .float-cta svg{width:22px;height:22px}
 
@@ -122,123 +118,135 @@
 <header>
   <div class="container nav">
     <a class="logo" href="index.html"><svg viewBox="0 0 24 24" fill="#FF7A1A"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>Tesla<b>Box</b></a>
-    <span class="demo-badge">ДЕМО · НЕ ПУБЛИКУЕТСЯ</span>
+    <span class="demo-badge">DEMO · NE OBJAVLJUJE SE</span>
   </div>
 </header>
 
-<div class="promo-strip">🔥 <b>Акция на закупку:</b> первый взнос всего <b>50%</b> · при закупке от 30 станций — <b>до 16 станций в подарок</b></div>
+<div class="promo-strip">🔥 <b>Akcija na nabavku:</b> prva uplata samo <b>50%</b> · od 30 stanica — <b>do 16 stanica na poklon</b></div>
 
 <!-- HERO -->
 <section class="hero">
   <svg class="bolt-bg" viewBox="0 0 24 24" fill="#FF7A1A"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
   <div class="container">
-    <h1 style="max-width:900px">Стань агентом <span class="accent">TeslaBox</span><br>и зарабатывай на аренде пауэрбанков</h1>
-    <p class="lead">Ты приводишь точки и ставишь станции — мы даём оборудование, приложение, биллинг и поддержку. Надёжность подтверждена собственной сетью станций в Белграде.</p>
+    <h1 style="max-width:900px">Postani agent <span class="accent">TeslaBox</span><br>i zarađuj na iznajmljivanju powerbank-ova</h1>
+    <p class="lead">Ti dovodiš lokale i postavljaš stanice — mi dajemo opremu, aplikaciju, naplatu i podršku. Pouzdanost potvrđena sopstvenom mrežom stanica u Beogradu.</p>
     <div style="display:flex;gap:16px;flex-wrap:wrap">
-      <a class="btn btn-primary" href="#zayavka">Оставить заявку</a>
-      <a class="btn btn-ghost" href="#akcii">Смотреть акции</a>
+      <a class="btn btn-primary" href="#prijava">Ostavi prijavu</a>
+      <a class="btn btn-ghost" href="#akcije">Pogledaj akcije</a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><b>до 90%</b><span>выручки — агенту</span></div>
-      <div class="stat"><b>+2–6%</b><span>бонус за объём закупки</span></div>
-      <div class="stat"><b>0 €</b><span>паушальный взнос</span></div>
-      <div class="stat"><b>50%</b><span>первый платёж, остальное — из выручки</span></div>
+      <div class="stat"><b>do 90%</b><span>prihoda ide agentu</span></div>
+      <div class="stat"><b>+2–6%</b><span>bonus za obim nabavke</span></div>
+      <div class="stat"><b>0 €</b><span>ulazna naknada</span></div>
+      <div class="stat"><b>50%</b><span>prva rata, ostatak iz prihoda</span></div>
     </div>
   </div>
 </section>
 
-<!-- ПОЧЕМУ -->
+<!-- PREDNOSTI (photo cards, EM style) -->
 <section style="background:var(--bg-soft)">
   <div class="container">
-    <h2>Почему <span class="accent">TeslaBox</span></h2>
-    <p class="sub">Агент зарабатывает, когда за ним стоит работающая система. Вот что получает каждый партнёр.</p>
-    <div class="grid4">
-      <div class="card"><h3>Своя сеть — не теория</h3><p>Мы сами оперируем станциями в Белграде и делимся живой статистикой точек, а не обещаниями из презентации.</p></div>
-      <div class="card"><h3>Готовая платформа</h3><p>Приложение, оплата картой / Apple Pay / Google Pay, личный кабинет агента с выручкой по каждой станции в реальном времени.</p></div>
-      <div class="card"><h3>Менеджер 1-на-1</h3><p>Персональный канальный менеджер: обучение переговорам с заведениями, скрипты, помощь с первыми точками.</p></div>
-      <div class="card"><h3>Поддержка 24/7</h3><p>Круглосуточная поддержка для агентов, удалённая диагностика станций технической командой.</p></div>
+    <h2>Prednosti <span class="accent">TeslaBox</span></h2>
+    <p class="sub">Agent zarađuje kada iza njega stoji sistem koji radi.</p>
+    <div class="grid2">
+      <div class="photo-card">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=70" alt="Lični nalog agenta sa grafikonima" loading="lazy" onerror="this.remove()">
+        <div class="cap">· Lični nalog: <b>prihod svake stanice uživo</b>, isplate nedeljno</div>
+      </div>
+      <div class="photo-card">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=70" alt="Kafić — lokacija za stanicu" loading="lazy" onerror="this.remove()">
+        <div class="cap">· Kafići, barovi, teretane — <b>stanica radi tamo gde se telefon prazni</b></div>
+      </div>
+      <div class="photo-card">
+        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=70" alt="Telefon korisnika" loading="lazy" onerror="this.remove()">
+        <div class="cap">· Sopstvena mreža u Beogradu — <b>živa statistika, ne obećanja</b></div>
+      </div>
+      <div class="photo-card">
+        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=70" alt="Partnerstvo" loading="lazy" onerror="this.remove()">
+        <div class="cap">· Dobar prinos, <b>mali ulog, brz povraćaj</b></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ДЕНЬГИ -->
+<!-- KAKO ZARAĐUJEŠ -->
 <section>
   <div class="container">
-    <h2>Как агент <span class="accent">зарабатывает</span></h2>
-    <p class="sub">Три источника дохода — как у крупнейших сетей мира.</p>
+    <h2>Kako agent <span class="accent">zarađuje</span></h2>
+    <p class="sub">Tri izvora prihoda — kao kod najvećih svetskih mreža.</p>
     <div class="grid3">
-      <div class="card"><span class="big">до 90%</span><h3>Аренда</h3><p>Основной доход — арендные платежи со своих станций. База 90% выручки + бонус 2–6% в зависимости от объёма закупленного парка. Выплаты еженедельно.</p></div>
-      <div class="card"><span class="big">+ €</span><h3>Реклама</h3><p>При парке от определённого размера — доход от рекламы: партнёрские предложения в приложении и на экранах больших станций.</p></div>
-      <div class="card"><span class="big">50/50</span><h3>Раздел с точкой</h3><p>Долю заведению назначаешь сам. Топовым точкам с большим трафиком можно дать входной бонус — и забрать локацию надолго.</p></div>
+      <div class="card"><span class="big">do 90%</span><h3>Iznajmljivanje</h3><p>Glavni prihod — rente sa tvojih stanica. Baza 90% prihoda + bonus 2–6% u zavisnosti od veličine nabavljenog parka. Isplate nedeljno.</p></div>
+      <div class="card"><span class="big">+ €</span><h3>Reklama</h3><p>Kod većeg parka — prihod od reklame: partnerske ponude u aplikaciji i na ekranima velikih stanica.</p></div>
+      <div class="card"><span class="big">50/50</span><h3>Podela sa lokalom</h3><p>Deo za lokal određuješ sam. Top lokacijama sa velikim prometom možeš dati ulazni bonus — i obezbediti lokaciju na duže.</p></div>
     </div>
   </div>
 </section>
 
-<!-- АКЦИИ -->
-<section id="akcii" style="background:var(--bg-soft)">
+<!-- AKCIJE -->
+<section id="akcije" style="background:var(--bg-soft)">
   <div class="container">
-    <h2>Акции на <span class="accent">закупку</span></h2>
-    <p class="sub">Чем больше парк — тем больше станций получаешь бесплатно и тем выше твоя доля.</p>
+    <h2>Akcije na <span class="accent">nabavku</span></h2>
+    <p class="sub">Veći park — više stanica na poklon i veći tvoj procenat.</p>
     <div class="grid3">
-      <div class="deal"><span class="ribbon">Старт</span><div class="gift">30 <b>+ 16</b></div><p class="note">купи 30 станций — получи 16 в подарок · итого 46</p></div>
-      <div class="deal"><span class="ribbon">Выгодно</span><div class="gift">40 <b>+ 27</b></div><p class="note">купи 40 станций — получи 27 в подарок · итого 67</p></div>
-      <div class="deal"><span class="ribbon">Максимум</span><div class="gift">100 <b>+ 100</b></div><p class="note">купи 100 станций — вторая сотня в подарок</p></div>
+      <div class="deal"><span class="ribbon">Start</span><div class="gift">30 <b>+ 16</b></div><p class="note">kupi 30 stanica — dobij 16 na poklon · ukupno 46</p></div>
+      <div class="deal"><span class="ribbon">Isplativo</span><div class="gift">40 <b>+ 27</b></div><p class="note">kupi 40 stanica — dobij 27 na poklon · ukupno 67</p></div>
+      <div class="deal"><span class="ribbon">Maksimum</span><div class="gift">100 <b>+ 100</b></div><p class="note">kupi 100 stanica — druga stotina na poklon</p></div>
     </div>
     <div class="grid2" style="margin-top:20px">
-      <div class="card"><h3>Рассрочка без процентов</h3><p>Первый платёж — 50% стоимости. Остаток — 12 равных частей, которые гасятся автоматически из выручки твоих станций. Без процентов, без кредитной истории.</p></div>
-      <div class="card"><h3>Станции без предоплаты</h3><p>Агентам, прошедшим проверку, — станции бесплатно в пределах лимита: стоимость вычитается из ежемесячных доходов по договору. Кэш не нужен вообще.</p></div>
+      <div class="card"><h3>Rate bez kamate</h3><p>Prva uplata — 50% cene. Ostatak — 12 jednakih rata koje se automatski pokrivaju iz prihoda tvojih stanica. Bez kamate, bez kreditne istorije.</p></div>
+      <div class="card"><h3>Stanice bez avansa</h3><p>Provereni agenti dobijaju stanice besplatno u okviru limita: cena se odbija od mesečnih prihoda po ugovoru. Keš uopšte nije potreban.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ВАРИАНТЫ -->
+<!-- FORMATI -->
 <section>
   <div class="container">
-    <h2>Варианты <span class="accent">сотрудничества</span></h2>
-    <p class="sub">Четыре формата — от первой станции в своём кафе до эксклюзива на регион.</p>
+    <h2>Formati <span class="accent">saradnje</span></h2>
+    <p class="sub">Četiri formata — od prve stanice u svom kafiću do ekskluzive za region.</p>
     <div class="grid4">
-      <div class="plan"><span class="tag">Формат 01</span><h3>Старт</h3><div class="share">80%</div>
-        <ul><li>3–5 станций</li><li>Свой район или свои заведения</li><li>Рассрочка 50/50</li></ul>
-        <a class="btn btn-ghost btn-sm" href="#zayavka">Консультация →</a></div>
-      <div class="plan hot"><span class="tag">Формат 02 · популярный</span><h3>Агент города</h3><div class="share">85%</div>
-        <ul><li>От 20 станций</li><li>Закреплённая территория</li><li>+ рекламный доход</li></ul>
-        <a class="btn btn-primary btn-sm" href="#zayavka">Консультация →</a></div>
-      <div class="plan"><span class="tag">Формат 03</span><h3>Мастер-агент</h3><div class="share">до 90%</div>
-        <ul><li>От 100 станций</li><li>Эксклюзив на регион</li><li>Право на суб-агентов</li></ul>
-        <a class="btn btn-ghost btn-sm" href="#zayavka">Консультация →</a></div>
-      <div class="plan"><span class="tag">Формат 04</span><h3>Для заведений</h3><div class="share">0 €</div>
-        <ul><li>Станция в ваш локал бесплатно</li><li>Доля с каждой аренды</li><li>Монтаж и сервис на нас</li></ul>
-        <a class="btn btn-ghost btn-sm" href="#zayavka">Консультация →</a></div>
+      <div class="plan"><span class="tag">Format 01</span><h3>Start</h3><div class="share">80%</div>
+        <ul><li>3–5 stanica</li><li>Svoj kraj ili svoji lokali</li><li>Rate 50/50</li></ul>
+        <a class="btn btn-ghost btn-sm" href="#prijava">Konsultacija →</a></div>
+      <div class="plan hot"><span class="tag">Format 02 · najtraženiji</span><h3>Agent grada</h3><div class="share">85%</div>
+        <ul><li>Od 20 stanica</li><li>Dodeljena teritorija</li><li>+ prihod od reklame</li></ul>
+        <a class="btn btn-primary btn-sm" href="#prijava">Konsultacija →</a></div>
+      <div class="plan"><span class="tag">Format 03</span><h3>Master-agent</h3><div class="share">do 90%</div>
+        <ul><li>Od 100 stanica</li><li>Ekskluziva za region</li><li>Pravo na sub-agente</li></ul>
+        <a class="btn btn-ghost btn-sm" href="#prijava">Konsultacija →</a></div>
+      <div class="plan"><span class="tag">Format 04</span><h3>Za lokale</h3><div class="share">0 €</div>
+        <ul><li>Stanica u vaš lokal besplatno</li><li>Deo od svake rente</li><li>Montaža i servis na nama</li></ul>
+        <a class="btn btn-ghost btn-sm" href="#prijava">Konsultacija →</a></div>
     </div>
   </div>
 </section>
 
-<!-- ОБОРУДОВАНИЕ -->
+<!-- OPREMA -->
 <section style="background:var(--bg-soft)">
   <div class="container">
-    <h2>Оборудование и <span class="accent">цены для агентов</span></h2>
-    <p class="sub">Все станции сертифицированы, год гарантии, бесплатная замена пауэрбанков на весь срок сотрудничества.</p>
+    <h2>Oprema i <span class="accent">cene za agente</span></h2>
+    <p class="sub">Sve stanice su sertifikovane, godinu dana garancije, besplatna zamena powerbank-ova tokom cele saradnje.</p>
     <div class="grid4">
-      <div class="prod"><div class="slots">6<small> слотов</small></div><p>Компактная — кафе, салоны, магазины у дома</p><div><span class="old">140 €</span> <span class="price">от 70 €</span></div></div>
-      <div class="prod"><div class="slots">8<small> слотов</small></div><p>Универсальная — большинство сценариев</p><div><span class="old">180 €</span> <span class="price">от 90 €</span></div></div>
-      <div class="prod"><div class="slots">12<small> слотов</small></div><p>Бары, клубы, фитнес — высокая ротация</p><div><span class="old">260 €</span> <span class="price">от 130 €</span></div></div>
-      <div class="prod"><div class="slots">48<small> + экран</small></div><p>ТЦ, вокзалы, аэропорт — максимальный трафик + реклама на экране</p><div><span class="price">1 900 €</span></div></div>
+      <div class="prod"><div class="slots">6<small> slotova</small></div><p>Kompaktna — kafići, saloni, prodavnice</p><div><span class="old">140 €</span> <span class="price">od 70 €</span></div></div>
+      <div class="prod"><div class="slots">8<small> slotova</small></div><p>Univerzalna — većina scenarija</p><div><span class="old">180 €</span> <span class="price">od 90 €</span></div></div>
+      <div class="prod"><div class="slots">12<small> slotova</small></div><p>Barovi, klubovi, teretane — velika rotacija</p><div><span class="old">260 €</span> <span class="price">od 130 €</span></div></div>
+      <div class="prod"><div class="slots">48<small> + ekran</small></div><p>TC, stanice, aerodrom — maksimalan promet + reklama na ekranu</p><div><span class="price">1 900 €</span></div></div>
     </div>
-    <p style="color:var(--muted);font-size:.85rem;margin-top:18px">* Цены демонстрационные — скопирована логика прайса Energy Monster: базовая цена и «акционная −50%».</p>
+    <p style="color:var(--muted);font-size:.85rem;margin-top:18px">* Cene su demonstrativne — preuzeta je logika cenovnika Energy Monster: osnovna cena i akcijska −50%.</p>
   </div>
 </section>
 
-<!-- ПРОЦЕСС -->
+<!-- KORACI -->
 <section>
   <div class="container">
-    <h2>Как <span class="accent">начать</span></h2>
-    <p class="sub">От заявки до первых выплат — пять шагов.</p>
+    <h2>Kako da <span class="accent">počneš</span></h2>
+    <p class="sub">Od prijave do prvih isplata — pet koraka.</p>
     <div class="steps">
-      <div class="step"><p>Заявка и консультация с менеджером</p></div>
-      <div class="step"><p>Договор и закупка станций</p></div>
-      <div class="step"><p>Подбор точек и монтаж</p></div>
-      <div class="step"><p>Запуск, обучение, личный кабинет</p></div>
-      <div class="step"><p>Еженедельные выплаты</p></div>
+      <div class="step"><p>Prijava i konsultacija sa menadžerom</p></div>
+      <div class="step"><p>Ugovor i nabavka stanica</p></div>
+      <div class="step"><p>Izbor lokacija i montaža</p></div>
+      <div class="step"><p>Pokretanje, obuka, lični nalog</p></div>
+      <div class="step"><p>Nedeljne isplate</p></div>
     </div>
   </div>
 </section>
@@ -246,32 +254,32 @@
 <!-- FAQ -->
 <section style="background:var(--bg-soft)">
   <div class="container">
-    <h2>Частые <span class="accent">вопросы</span></h2>
+    <h2>Česta <span class="accent">pitanja</span></h2>
     <p class="sub" style="margin-bottom:32px"></p>
-    <details><summary>Нет опыта переговоров с заведениями — что делать?</summary><p>На старте менеджер TeslaBox за руку обучит технике и скриптам переговоров. Агент и заведение делят доход — зарабатываете вместе. Топовым точкам с большим трафиком можно предложить входной бонус ради долгосрочной выгоды.</p></details>
-    <details><summary>Как я зарабатываю на станциях?</summary><p>Основной доход — арендные платежи с ваших станций. При росте парка добавляется рекламный доход: размещение партнёрских предложений в приложении и на экранах станций.</p></details>
-    <details><summary>Какая поддержка после подключения?</summary><p>Канальный менеджер остаётся вашим партнёром и консультантом. Поддержка агентов работает круглосуточно, техническая команда удалённо диагностирует и чинит станции.</p></details>
-    <details><summary>Туго с деньгами на закупку?</summary><p>Есть оплата частями: 50% при старте, остаток 12 платежей из выручки станций без процентов. Агентам, прошедшим проверку, — станции без предоплаты в пределах лимита.</p></details>
-    <details><summary>Нет опыта управления?</summary><p>Менеджер проведёт обучение 1-на-1 по продукту и бизнесу и поможет с операционкой. Цель TeslaBox — чтобы каждый партнёр зарабатывал.</p></details>
-    <details><summary>Что с качеством оборудования?</summary><p>Станции сертифицированы (CE), проходят испытания на перегрев, перегрузку и вандализм. Год гарантии и бесплатная замена пауэрбанков на весь срок сотрудничества.</p></details>
+    <details><summary>Nemam iskustva u pregovorima sa lokalima — šta da radim?</summary><p>Na startu te menadžer TeslaBox-a lično obučava tehnici i skriptama pregovora. Agent i lokal dele prihod — zarađujete zajedno. Top lokacijama sa velikim prometom možeš ponuditi ulazni bonus radi dugoročne dobiti.</p></details>
+    <details><summary>Kako zarađujem na stanicama?</summary><p>Glavni prihod su rente sa tvojih stanica. Sa rastom parka dodaje se prihod od reklame: partnerske ponude u aplikaciji i na ekranima stanica.</p></details>
+    <details><summary>Kakva je podrška posle priključenja?</summary><p>Menadžer kanala ostaje tvoj partner i konsultant. Podrška za agente radi 24/7, tehnički tim daljinski dijagnostikuje i popravlja stanice.</p></details>
+    <details><summary>Nemam dovoljno novca za nabavku?</summary><p>Postoji plaćanje na rate: 50% na startu, ostatak 12 rata iz prihoda stanica bez kamate. Provereni agenti dobijaju stanice bez avansa u okviru limita.</p></details>
+    <details><summary>Nemam iskustva u vođenju biznisa?</summary><p>Menadžer sprovodi obuku 1-na-1 o proizvodu i biznisu i pomaže sa operativom. Cilj TeslaBox-a je da svaki partner zarađuje.</p></details>
+    <details><summary>Kakav je kvalitet opreme?</summary><p>Stanice su sertifikovane (CE), prolaze testove na pregrevanje, preopterećenje i vandalizam. Godinu dana garancije i besplatna zamena powerbank-ova tokom cele saradnje.</p></details>
   </div>
 </section>
 
-<!-- ЗАЯВКА -->
-<section id="zayavka">
+<!-- PRIJAVA -->
+<section id="prijava">
   <div class="container">
-    <h2>Оставить <span class="accent">заявку</span></h2>
+    <h2>Ostavi <span class="accent">prijavu</span></h2>
     <div class="form-stub" style="margin-top:32px">
-      <p>Демо-страница: форма не подключена. В боевой версии здесь заявка (имя, телефон, город, планируемый объём) с отправкой менеджеру.</p>
-      <a class="btn btn-primary" href="mailto:sales@teslabox.rs">Написать: sales@teslabox.rs</a>
+      <p>Demo stranica: forma nije povezana. U finalnoj verziji ovde je prijava (ime, telefon, grad, planirani obim) sa slanjem menadžeru.</p>
+      <a class="btn btn-primary" href="mailto:sales@teslabox.rs">Piši: sales@teslabox.rs</a>
     </div>
   </div>
 </section>
 
-<a class="float-cta" href="#zayavka" aria-label="Консультация"><svg viewBox="0 0 24 24" fill="#141414"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>Заявка</a>
+<a class="float-cta" href="#prijava" aria-label="Prijava"><svg viewBox="0 0 24 24" fill="#141414"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>Prijava</a>
 
 <footer>
-  <div class="container">TESLABOX DOO BEOGRAD · демонстрационный макет агентской страницы по модели Energy Monster · не индексируется, ссылок с сайта нет</div>
+  <div class="container">TESLABOX DOO BEOGRAD · demonstracioni maket agentske stranice po modelu Energy Monster · ne indeksira se, nema linkova sa sajta</div>
 </footer>
 
 </body>
