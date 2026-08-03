@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="sr" xmlns:xlink="http://www.w3.org/1999/xlink">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Партнёрская программа — TeslaBox (демо)</title>
-<meta name="description" content="Prazna baterija? Iznajmi powerbank na najbližoj TeslaBox stanici. Uzmi na jednoj, vrati na bilo kojoj stanici u Srbiji.">
+<meta name="robots" content="noindex,nofollow">
+<title>Агентская программа — TeslaBox (демо)</title>
+<meta name="description" content="Демо-макет агентской страницы TeslaBox по модели Energy Monster">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -12,425 +13,266 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,700;1,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0B0B0D;
-    --bg-soft:#141417;
-    --card:#1A1A1F;
-    --line:#2A2A31;
-    --orange:#FF7A1A;
-    --orange-hot:#FF9A3D;
-    --white:#F5F4F2;
-    --muted:#9C9CA6;
-    --radius:16px;
+    --bg:#0B0B0D; --bg-soft:#141417; --card:#1A1A1F; --line:#2A2A31;
+    --orange:#FF7A1A; --orange-hot:#FF9A3D; --white:#F5F4F2; --muted:#9C9CA6; --radius:16px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{
-    background:var(--bg);
-    color:var(--white);
-    font-family:'Inter',system-ui,sans-serif;
-    font-size:16px;
-    line-height:1.6;
-    overflow-x:hidden;
-  }
-  h1,h2,h3,.btn,.nav-links a,.tag{
-    font-family:'Barlow Condensed',sans-serif;
-    text-transform:uppercase;
-    letter-spacing:.02em;
-  }
-  h1{font-weight:800;font-style:italic;font-size:clamp(2.6rem,7vw,5.2rem);line-height:.95}
+  body{background:var(--bg);color:var(--white);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+  h1,h2,h3,.btn,.nav-links a,.tag{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.02em}
+  h1{font-weight:800;font-style:italic;font-size:clamp(2.4rem,6.5vw,4.8rem);line-height:.95}
   h2{font-weight:700;font-style:italic;font-size:clamp(1.9rem,4.5vw,3rem);line-height:1}
-  h3{font-weight:700;font-size:1.35rem}
+  h3{font-weight:700;font-size:1.3rem}
   .accent{color:var(--orange)}
   .container{max-width:1120px;margin:0 auto;padding:0 24px}
-  section{padding:88px 0}
+  section{padding:80px 0}
+  .sub{color:var(--muted);max-width:640px;margin:14px 0 44px}
 
-  /* ---------- NAV ---------- */
-  header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(11,11,13,.85);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--line);
-  }
+  header{position:sticky;top:0;z-index:50;background:rgba(11,11,13,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
   .logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-style:italic;font-size:1.6rem;text-transform:uppercase;text-decoration:none;color:var(--white);display:flex;align-items:center;gap:8px}
-  .logo b{color:var(--orange);font-weight:800}
-  .logo svg{width:20px;height:20px}
-  .nav-links{display:flex;gap:28px;align-items:center}
-  .nav-links a{color:var(--muted);text-decoration:none;font-weight:600;font-size:1.05rem;transition:color .2s}
-  .nav-links a:hover,.nav-links a:focus-visible{color:var(--orange)}
-  .nav-cta{display:inline-block}
-  @media(max-width:820px){.nav-links{display:none}}
+  .logo b{color:var(--orange)}
+  .demo-badge{font-size:.72rem;font-weight:600;color:#141414;background:var(--orange-hot);border-radius:6px;padding:2px 8px;letter-spacing:.06em}
 
-  /* ---------- BUTTONS ---------- */
-  .btn{
-    display:inline-block;
-    padding:14px 32px;
-    border-radius:999px;
-    font-weight:700;
-    font-size:1.15rem;
-    text-decoration:none;
-    transition:transform .15s ease, box-shadow .2s;
-    cursor:pointer;
-    border:none;
-  }
+  .btn{display:inline-block;padding:14px 32px;border-radius:999px;font-weight:700;font-size:1.1rem;text-decoration:none;transition:transform .15s ease, box-shadow .2s;cursor:pointer;border:none}
   .btn:focus-visible{outline:3px solid var(--orange-hot);outline-offset:3px}
-  .btn-primary{
-    background:linear-gradient(180deg,var(--orange-hot),var(--orange));
-    color:#141414;
-    box-shadow:0 6px 28px rgba(255,122,26,.35);
-  }
+  .btn-primary{background:linear-gradient(180deg,var(--orange-hot),var(--orange));color:#141414;box-shadow:0 6px 28px rgba(255,122,26,.35)}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(255,122,26,.5)}
-  .btn-ghost{
-    border:1.5px solid var(--orange);
-    color:var(--orange);
-    background:transparent;
-  }
+  .btn-ghost{border:1.5px solid var(--orange);color:var(--orange);background:transparent}
   .btn-ghost:hover{background:rgba(255,122,26,.08)}
+  .btn-sm{padding:10px 22px;font-size:1rem}
 
-  /* ---------- HERO ---------- */
-  .hero{
-    position:relative;
-    padding:96px 0 110px;
-    overflow:hidden;
-  }
-  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
-  @media(max-width:820px){.hero-grid{grid-template-columns:1fr}}
-  .hero p.lead{color:var(--muted);font-size:1.15rem;max-width:460px;margin:22px 0 34px}
-  .hero .btn-row{display:flex;gap:16px;flex-wrap:wrap}
-  .hero-stats{display:flex;gap:40px;margin-top:48px;flex-wrap:wrap}
-  .hero-stats .stat b{display:block;font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:2rem;color:var(--orange)}
+  /* promo strip */
+  .promo-strip{background:linear-gradient(90deg,#2a1503,#3d1e02);border-bottom:1px solid rgba(255,122,26,.4);padding:10px 0;text-align:center;font-size:.95rem}
+  .promo-strip b{color:var(--orange-hot)}
+
+  /* hero */
+  .hero{position:relative;padding:88px 0 96px;overflow:hidden}
+  .hero p.lead{color:var(--muted);font-size:1.15rem;max-width:560px;margin:22px 0 34px}
+  .hero-stats{display:flex;gap:44px;margin-top:52px;flex-wrap:wrap}
+  .hero-stats .stat b{display:block;font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:2.2rem;color:var(--orange)}
   .hero-stats .stat span{color:var(--muted);font-size:.9rem}
-
-  /* bolt backdrop */
-  .bolt-bg{
-    position:absolute;right:-6%;top:-12%;
-    width:620px;height:620px;
-    opacity:.14;
-    filter:blur(2px);
-    pointer-events:none;
-    animation:pulse 4.5s ease-in-out infinite;
-  }
+  .bolt-bg{position:absolute;right:-6%;top:-12%;width:620px;height:620px;opacity:.14;filter:blur(2px);pointer-events:none;animation:pulse 4.5s ease-in-out infinite}
   @keyframes pulse{0%,100%{opacity:.10}50%{opacity:.2}}
-  @media(prefers-reduced-motion:reduce){
-    .bolt-bg{animation:none}
-    .btn-primary:hover{transform:none}
-  }
+  @media(prefers-reduced-motion:reduce){.bolt-bg{animation:none}.btn-primary:hover{transform:none}}
 
-  /* powerbank mock */
-  .pb{
-    position:relative;
-    width:min(300px,80%);
-    aspect-ratio:1/2;
-    margin:0 auto;
-    background:linear-gradient(160deg,#1E1E23,#0E0E11);
-    border:1px solid var(--line);
-    border-radius:28px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:space-between;
-    padding:36px 20px 28px;
-    box-shadow:0 30px 80px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.06);
-    transform:rotate(-4deg);
-  }
-  .pb .pb-logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-style:italic;font-size:1.4rem;letter-spacing:.05em}
-  .pb .pb-logo b{color:var(--orange)}
-  .pb svg.bolt{width:56%;filter:drop-shadow(0 0 26px rgba(255,122,26,.65))}
-  .pb .pb-cta{
-    font-family:'Barlow Condensed',sans-serif;font-weight:700;font-style:italic;
-    text-transform:uppercase;text-align:center;font-size:1.15rem;line-height:1.15;
-  }
-  .pb .pb-url{
-    margin-top:12px;border:1.5px solid var(--orange);border-radius:10px;
-    padding:6px 18px;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1rem;
-    color:var(--white);
-  }
+  /* cards */
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  @media(max-width:900px){.grid4,.grid3{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.grid4,.grid3,.grid2{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px}
+  .card h3{margin-bottom:10px}
+  .card p{color:var(--muted);font-size:.95rem}
+  .card .big{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:2.4rem;color:var(--orange);line-height:1;display:block;margin-bottom:8px}
 
-  /* ---------- SECTION HEADERS ---------- */
-  .sec-head{max-width:640px;margin-bottom:52px}
-  .tag{
-    display:inline-block;color:var(--orange);font-weight:700;font-size:1rem;
-    border:1px solid rgba(255,122,26,.4);border-radius:999px;padding:4px 16px;margin-bottom:16px;
-  }
-  .sec-head p{color:var(--muted);margin-top:14px}
+  /* deals */
+  .deal{position:relative;background:var(--card);border:1px solid rgba(255,122,26,.45);border-radius:var(--radius);padding:30px 24px;text-align:center;overflow:hidden}
+  .deal .gift{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:2.6rem;line-height:1;color:var(--white)}
+  .deal .gift b{color:var(--orange)}
+  .deal .note{color:var(--muted);font-size:.9rem;margin-top:8px}
+  .deal .ribbon{position:absolute;top:14px;right:-38px;transform:rotate(35deg);background:var(--orange);color:#141414;font-weight:700;font-size:.72rem;padding:3px 42px;letter-spacing:.06em;text-transform:uppercase}
 
-  /* ---------- STEPS ---------- */
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  @media(max-width:820px){.steps{grid-template-columns:1fr}}
-  .step{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    padding:32px 26px;position:relative;overflow:hidden;
-  }
-  .step .n{
-    font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;
-    font-size:3.4rem;color:transparent;-webkit-text-stroke:1.5px var(--orange);
-    line-height:1;display:block;margin-bottom:14px;
-  }
-  .step p{color:var(--muted);margin-top:8px;font-size:.98rem}
+  /* plans */
+  .plan{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px}
+  .plan.hot{border-color:var(--orange)}
+  .plan .tag{font-size:.8rem;color:var(--orange);font-weight:700;margin-bottom:6px}
+  .plan h3{font-size:1.5rem}
+  .plan .share{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:2rem;color:var(--orange);margin:10px 0 2px}
+  .plan ul{list-style:none;margin:14px 0 22px;flex:1}
+  .plan li{color:var(--muted);font-size:.93rem;padding:6px 0;border-top:1px solid var(--line)}
+  .plan li:first-child{border-top:none}
 
-  /* ---------- PRICING ---------- */
-  .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  @media(max-width:820px){.prices{grid-template-columns:1fr}}
-  .price{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    padding:34px 28px;text-align:center;transition:border-color .2s, transform .2s;
-  }
-  .price:hover{border-color:var(--orange);transform:translateY(-4px)}
-  .price .amount{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:2.6rem;color:var(--orange);display:block;margin:10px 0 4px}
-  .price .per{color:var(--muted);font-size:.9rem}
-  .price ul{list-style:none;margin-top:20px;text-align:left}
-  .price li{color:var(--muted);font-size:.95rem;padding:6px 0;border-top:1px dashed var(--line)}
-  .price li::before{content:"⚡ ";color:var(--orange)}
-  .fineprint{color:var(--muted);font-size:.85rem;margin-top:24px;text-align:center}
+  /* products */
+  .prod{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;text-align:center}
+  .prod .slots{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:3rem;color:var(--white);line-height:1}
+  .prod .slots small{font-size:1.1rem;color:var(--muted);font-style:normal;font-weight:600}
+  .prod p{color:var(--muted);font-size:.9rem;margin:8px 0 14px;min-height:44px}
+  .prod .old{color:var(--muted);text-decoration:line-through;font-size:1rem}
+  .prod .price{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:1.9rem;color:var(--orange)}
 
-  /* ---------- LOCATIONS ---------- */
-  .loc-band{
-    background:var(--bg-soft);
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-  }
-  .loc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
-  @media(max-width:820px){.loc-grid{grid-template-columns:repeat(2,1fr)}}
-  .loc{
-    background:var(--card);border:1px solid var(--line);border-radius:12px;
-    padding:18px 20px;font-weight:600;display:flex;align-items:center;gap:10px;
-  }
-  .loc svg{width:16px;height:16px;flex:none}
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:st}
+  @media(max-width:900px){.steps{grid-template-columns:1fr;max-width:460px}}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 18px;position:relative;counter-increment:st}
+  .step::before{content:counter(st,decimal-leading-zero);font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;font-size:1.6rem;color:var(--orange);display:block;margin-bottom:6px}
+  .step p{font-size:.92rem;color:var(--white)}
 
-  /* ---------- PARTNERS ---------- */
-  .partner-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-  @media(max-width:820px){.partner-grid{grid-template-columns:1fr}}
-  .benefits{list-style:none;margin:26px 0 34px}
-  .benefits li{
-    padding:14px 0 14px 38px;position:relative;color:var(--muted);
-    border-bottom:1px solid var(--line);
-  }
-  .benefits li strong{color:var(--white)}
-  .benefits li::before{
-    content:"";position:absolute;left:0;top:18px;width:22px;height:22px;
-    background:radial-gradient(circle at 35% 35%,var(--orange-hot),var(--orange));
-    border-radius:50%;
-    clip-path:polygon(50% 0,20% 55%,45% 55%,40% 100%,80% 40%,52% 40%);
-  }
-  .station-card{
-    background:linear-gradient(160deg,#1B1B20,#101013);
-    border:1px solid var(--line);border-radius:24px;padding:40px;text-align:center;
-  }
-  .station-card .big-bolt{width:120px;filter:drop-shadow(0 0 34px rgba(255,122,26,.5))}
-  .station-card p{color:var(--muted);margin-top:16px}
+  /* faq */
+  details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:12px;padding:0 24px}
+  summary{cursor:pointer;padding:20px 0;font-weight:600;list-style:none;position:relative;padding-right:32px}
+  summary::after{content:"+";position:absolute;right:0;top:16px;color:var(--orange);font-size:1.5rem;font-weight:400}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--muted);padding:0 0 20px;font-size:.95rem}
 
-  /* ---------- FAQ ---------- */
-  details{
-    background:var(--card);border:1px solid var(--line);border-radius:12px;
-    margin-bottom:12px;overflow:hidden;
-  }
-  summary{
-    cursor:pointer;padding:20px 24px;font-weight:600;list-style:none;
-    display:flex;justify-content:space-between;align-items:center;gap:16px;
-  }
-  summary::-webkit-details-marker{display:none}
-  summary::after{content:"+";color:var(--orange);font-size:1.5rem;font-weight:400;transition:transform .2s}
-  details[open] summary::after{transform:rotate(45deg)}
-  details p{padding:0 24px 20px;color:var(--muted);font-size:.97rem}
+  /* form stub */
+  .form-stub{background:var(--card);border:1px dashed var(--line);border-radius:var(--radius);padding:36px;text-align:center}
+  .form-stub p{color:var(--muted);margin-bottom:20px}
 
-  /* ---------- CTA / FOOTER ---------- */
-  .final-cta{
-    text-align:center;
-    background:
-      radial-gradient(ellipse 60% 80% at 50% 120%, rgba(255,122,26,.18), transparent),
-      var(--bg);
-  }
-  .final-cta p{color:var(--muted);max-width:480px;margin:18px auto 34px}
-  footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:.9rem}
-  .foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
-  .foot a{color:var(--muted);text-decoration:none}
-  .foot a:hover{color:var(--orange)}
+  /* floating consult */
+  .float-cta{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;flex-direction:column;align-items:center;gap:4px;background:linear-gradient(180deg,var(--orange-hot),var(--orange));color:#141414;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:.95rem;padding:14px 16px;border-radius:14px;box-shadow:0 8px 30px rgba(255,122,26,.45)}
+  .float-cta svg{width:22px;height:22px}
 
-  /* ---------- MOBILE FIXES ---------- */
-  .burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;padding:8px 12px;color:var(--white);font-size:1.2rem;line-height:1;cursor:pointer}
-  .burger:focus-visible{outline:3px solid var(--orange-hot)}
-  @media(max-width:820px){
-    section{padding:56px 0}
-    .hero{padding:48px 0 64px}
-    .hero-grid{gap:36px}
-    .hero p.lead{font-size:1.05rem}
-    .hero-stats{gap:22px;margin-top:36px}
-    .btn{padding:13px 26px;font-size:1.05rem;width:100%;text-align:center}
-    .btn-row{flex-direction:column}
-    .nav-cta{display:none}
-    .burger{display:block}
-    .nav-links{
-      display:none;position:absolute;top:68px;left:0;right:0;
-      flex-direction:column;gap:0;background:var(--bg-soft);
-      border-bottom:1px solid var(--line);padding:8px 0;
-    }
-    .nav-links.open{display:flex}
-    .nav-links a{padding:14px 24px;font-size:1.2rem;border-top:1px solid var(--line)}
-    .pb{width:min(230px,70%);padding:26px 16px 20px;transform:rotate(-3deg)}
-    .pb .pb-cta{font-size:1rem}
-    .pb .pb-url{font-size:.9rem;padding:5px 14px}
-    .bolt-bg{width:380px;right:-30%;top:auto;bottom:-10%}
-    .station-card{padding:28px 20px}
-    .station-card .big-bolt{width:80px}
-    .step{padding:26px 20px}
-    .price{padding:28px 20px}
-    .loc{padding:14px 14px;font-size:.92rem}
-    .foot{flex-direction:column;text-align:center}
-    summary{padding:16px 18px;font-size:.98rem}
-    details p{padding:0 18px 16px}
-  }
-  @media(max-width:380px){
-    .loc-grid{grid-template-columns:1fr}
-    h1{font-size:2.3rem}
-  }
-
-
-  /* svg geometry fix (iOS Safari) */
-  .pb svg.bolt{height:auto;aspect-ratio:100/160;flex:none}
-  .station-card .big-bolt{height:auto;aspect-ratio:100/160}
-  .logo svg{aspect-ratio:100/160}
-  .pb .pb-logo{flex:none}
-
-
-  .pb-img{
-    display:block;width:min(330px,82%);height:auto;margin:0 auto;
-    border-radius:24px;
-    box-shadow:0 30px 80px rgba(0,0,0,.65), 0 0 60px rgba(255,122,26,.15);
-    transform:rotate(-2deg);
-  }
-  @media(max-width:820px){.pb-img{width:min(250px,72%)}}
-
-
-  .nav-phone{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;color:var(--white);text-decoration:none;letter-spacing:.03em;margin-right:14px}
-  .nav-phone:hover{color:var(--orange)}
-  @media(max-width:820px){.nav-phone{display:none}}
-  .mob-contact{display:none}
-  @media(max-width:820px){
-    .mob-contact{display:block;padding:14px 24px;border-top:1px solid var(--line)}
-    .mob-contact a{color:var(--orange)!important;font-weight:700}
-  }
-
+  footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:.85rem;text-align:center}
 </style>
-
-<meta name="robots" content="noindex,nofollow">
 </head>
-
 <body>
-<header><div class="container" style="display:flex;justify-content:space-between;align-items:center">
-<a class="logo" href="#">Tesla<b>Box</b></a>
-<span style="font-size:.8rem;color:var(--muted);letter-spacing:.08em">ДЕМО · НЕ ПУБЛИКУЕТСЯ</span>
-</div></header>
 
-<section class="hero" style="padding:80px 0 60px">
-<div class="container">
-<h1 style="max-width:900px">Стань агентом <span class="accent">TeslaBox</span><br>и зарабатывай на аренде пауэрбанков</h1>
-<p style="max-width:640px;margin-top:18px">Высокая доля выручки · Без входного порога · Лёгкая операционка. Надёжность партнёра подтверждена собственной сетью станций в Белграде.</p>
-<a class="btn" href="#zayavka" style="margin-top:28px;display:inline-block">Оставить заявку</a>
-</div>
+<header>
+  <div class="container nav">
+    <a class="logo" href="index.html"><svg viewBox="0 0 24 24" fill="#FF7A1A"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>Tesla<b>Box</b></a>
+    <span class="demo-badge">ДЕМО · НЕ ПУБЛИКУЕТСЯ</span>
+  </div>
+</header>
+
+<div class="promo-strip">🔥 <b>Акция на закупку:</b> первый взнос всего <b>50%</b> · при закупке от 30 станций — <b>до 16 станций в подарок</b></div>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="bolt-bg" viewBox="0 0 24 24" fill="#FF7A1A"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+  <div class="container">
+    <h1 style="max-width:900px">Стань агентом <span class="accent">TeslaBox</span><br>и зарабатывай на аренде пауэрбанков</h1>
+    <p class="lead">Ты приводишь точки и ставишь станции — мы даём оборудование, приложение, биллинг и поддержку. Надёжность подтверждена собственной сетью станций в Белграде.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <a class="btn btn-primary" href="#zayavka">Оставить заявку</a>
+      <a class="btn btn-ghost" href="#akcii">Смотреть акции</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>до 90%</b><span>выручки — агенту</span></div>
+      <div class="stat"><b>+2–6%</b><span>бонус за объём закупки</span></div>
+      <div class="stat"><b>0 €</b><span>паушальный взнос</span></div>
+      <div class="stat"><b>50%</b><span>первый платёж, остальное — из выручки</span></div>
+    </div>
+  </div>
 </section>
 
-<section style="padding:60px 0">
-<div class="container">
-<h2>Почему <span class="accent">TeslaBox</span></h2>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:36px">
-<div style="background:var(--card,#161616);border:1px solid var(--line,#2a2a2a);border-radius:16px;padding:28px">
-<h3 style="margin-bottom:10px">До 90% выручки</h3>
-<p>Основной доход агента — арендные платежи с его станций. Прозрачный раздел в личном кабинете, выплаты еженедельно.</p></div>
-<div style="background:var(--card,#161616);border:1px solid var(--line,#2a2a2a);border-radius:16px;padding:28px">
-<h3 style="margin-bottom:10px">Без паушального взноса</h3>
-<p>Никакой платы за франшизу. Вход — только закупка станций, объём выбираешь под свой бюджет и свои точки.</p></div>
-<div style="background:var(--card,#161616);border:1px solid var(--line,#2a2a2a);border-radius:16px;padding:28px">
-<h3 style="margin-bottom:10px">Рассрочка на оборудование</h3>
-<p>Оплата 50% при старте, остаток — частями. Проверенным агентам — станции без предоплаты с вычетом из будущих доходов.</p></div>
-<div style="background:var(--card,#161616);border:1px solid var(--line,#2a2a2a);border-radius:16px;padding:28px">
-<h3 style="margin-bottom:10px">Менеджер и поддержка 24/7</h3>
-<p>Персональный канальный менеджер: обучение переговорам с заведениями, помощь с точками, удалённая диагностика станций.</p></div>
-</div>
-</div>
+<!-- ПОЧЕМУ -->
+<section style="background:var(--bg-soft)">
+  <div class="container">
+    <h2>Почему <span class="accent">TeslaBox</span></h2>
+    <p class="sub">Агент зарабатывает, когда за ним стоит работающая система. Вот что получает каждый партнёр.</p>
+    <div class="grid4">
+      <div class="card"><h3>Своя сеть — не теория</h3><p>Мы сами оперируем станциями в Белграде и делимся живой статистикой точек, а не обещаниями из презентации.</p></div>
+      <div class="card"><h3>Готовая платформа</h3><p>Приложение, оплата картой / Apple Pay / Google Pay, личный кабинет агента с выручкой по каждой станции в реальном времени.</p></div>
+      <div class="card"><h3>Менеджер 1-на-1</h3><p>Персональный канальный менеджер: обучение переговорам с заведениями, скрипты, помощь с первыми точками.</p></div>
+      <div class="card"><h3>Поддержка 24/7</h3><p>Круглосуточная поддержка для агентов, удалённая диагностика станций технической командой.</p></div>
+    </div>
+  </div>
 </section>
 
-<section style="padding:60px 0;background:var(--card,#141414)">
-<div class="container">
-<h2>Варианты <span class="accent">сотрудничества</span></h2>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:36px">
-<div style="border:1px solid var(--line,#2a2a2a);border-radius:16px;padding:28px">
-<h3>Старт</h3><p style="margin:10px 0 16px">3–5 станций · свой район или свои заведения · доля агента 80%</p>
-<a href="#zayavka" style="color:var(--orange)">Консультация →</a></div>
-<div style="border:1px solid var(--orange);border-radius:16px;padding:28px">
-<h3>Агент города</h3><p style="margin:10px 0 16px">от 20 станций · закреплённая территория · доля агента 85% + рекламный доход</p>
-<a href="#zayavka" style="color:var(--orange)">Консультация →</a></div>
-<div style="border:1px solid var(--line,#2a2a2a);border-radius:16px;padding:28px">
-<h3>Мастер-агент</h3><p style="margin:10px 0 16px">от 100 станций · эксклюзив на регион · до 90% + суб-агенты</p>
-<a href="#zayavka" style="color:var(--orange)">Консультация →</a></div>
-<div style="border:1px solid var(--line,#2a2a2a);border-radius:16px;padding:28px">
-<h3>Для заведений</h3><p style="margin:10px 0 16px">Станция в ваш локал бесплатно · доля с каждой аренды · монтаж и сервис на нас</p>
-<a href="#zayavka" style="color:var(--orange)">Консультация →</a></div>
-</div>
-</div>
+<!-- ДЕНЬГИ -->
+<section>
+  <div class="container">
+    <h2>Как агент <span class="accent">зарабатывает</span></h2>
+    <p class="sub">Три источника дохода — как у крупнейших сетей мира.</p>
+    <div class="grid3">
+      <div class="card"><span class="big">до 90%</span><h3>Аренда</h3><p>Основной доход — арендные платежи со своих станций. База 90% выручки + бонус 2–6% в зависимости от объёма закупленного парка. Выплаты еженедельно.</p></div>
+      <div class="card"><span class="big">+ €</span><h3>Реклама</h3><p>При парке от определённого размера — доход от рекламы: партнёрские предложения в приложении и на экранах больших станций.</p></div>
+      <div class="card"><span class="big">50/50</span><h3>Раздел с точкой</h3><p>Долю заведению назначаешь сам. Топовым точкам с большим трафиком можно дать входной бонус — и забрать локацию надолго.</p></div>
+    </div>
+  </div>
 </section>
 
-<section style="padding:60px 0">
-<div class="container">
-<h2>Оборудование и <span class="accent">цены для агентов</span></h2>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:36px">
-<div style="background:var(--card,#161616);border:1px solid var(--line,#2a2a2a);border-radius:16px;padding:28px;text-align:center">
-<h3>Станция на 6 слотов</h3><p style="margin:8px 0">Компактная, для кафе и салонов</p>
-<p style="font-size:1.4rem;color:var(--orange);margin-top:12px">140 € <span style="font-size:.85rem;color:var(--muted)">(по акции от 70 €)</span></p></div>
-<div style="background:var(--card,#161616);border:1px solid var(--line,#2a2a2a);border-radius:16px;padding:28px;text-align:center">
-<h3>Станция на 8 слотов</h3><p style="margin:8px 0">Универсальная, большинство сценариев</p>
-<p style="font-size:1.4rem;color:var(--orange);margin-top:12px">180 € <span style="font-size:.85rem;color:var(--muted)">(по акции от 90 €)</span></p></div>
-<div style="background:var(--card,#161616);border:1px solid var(--line,#2a2a2a);border-radius:16px;padding:28px;text-align:center">
-<h3>Станция на 12 слотов</h3><p style="margin:8px 0">Для баров, клубов, фитнеса</p>
-<p style="font-size:1.4rem;color:var(--orange);margin-top:12px">260 € <span style="font-size:.85rem;color:var(--muted)">(по акции от 130 €)</span></p></div>
-<div style="background:var(--card,#161616);border:1px solid var(--line,#2a2a2a);border-radius:16px;padding:28px;text-align:center">
-<h3>Станция 48 слотов + экран</h3><p style="margin:8px 0">ТЦ, вокзалы, высокий трафик</p>
-<p style="font-size:1.4rem;color:var(--orange);margin-top:12px">1 900 €</p></div>
-</div>
-<p style="color:var(--muted);font-size:.85rem;margin-top:16px">* Цены демонстрационные — для макета скопирована логика прайса Energy Monster (кабинет по акции −50%).</p>
-</div>
+<!-- АКЦИИ -->
+<section id="akcii" style="background:var(--bg-soft)">
+  <div class="container">
+    <h2>Акции на <span class="accent">закупку</span></h2>
+    <p class="sub">Чем больше парк — тем больше станций получаешь бесплатно и тем выше твоя доля.</p>
+    <div class="grid3">
+      <div class="deal"><span class="ribbon">Старт</span><div class="gift">30 <b>+ 16</b></div><p class="note">купи 30 станций — получи 16 в подарок · итого 46</p></div>
+      <div class="deal"><span class="ribbon">Выгодно</span><div class="gift">40 <b>+ 27</b></div><p class="note">купи 40 станций — получи 27 в подарок · итого 67</p></div>
+      <div class="deal"><span class="ribbon">Максимум</span><div class="gift">100 <b>+ 100</b></div><p class="note">купи 100 станций — вторая сотня в подарок</p></div>
+    </div>
+    <div class="grid2" style="margin-top:20px">
+      <div class="card"><h3>Рассрочка без процентов</h3><p>Первый платёж — 50% стоимости. Остаток — 12 равных частей, которые гасятся автоматически из выручки твоих станций. Без процентов, без кредитной истории.</p></div>
+      <div class="card"><h3>Станции без предоплаты</h3><p>Агентам, прошедшим проверку, — станции бесплатно в пределах лимита: стоимость вычитается из ежемесячных доходов по договору. Кэш не нужен вообще.</p></div>
+    </div>
+  </div>
 </section>
 
-<section style="padding:60px 0;background:var(--card,#141414)">
-<div class="container">
-<h2>Как <span class="accent">начать</span></h2>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-top:36px">
-<div><p style="font-size:2rem;color:var(--orange)">1</p><p>Заявка и консультация с менеджером</p></div>
-<div><p style="font-size:2rem;color:var(--orange)">2</p><p>Договор и закупка станций</p></div>
-<div><p style="font-size:2rem;color:var(--orange)">3</p><p>Подбор точек и монтаж</p></div>
-<div><p style="font-size:2rem;color:var(--orange)">4</p><p>Запуск, обучение, личный кабинет</p></div>
-<div><p style="font-size:2rem;color:var(--orange)">5</p><p>Еженедельные выплаты</p></div>
-</div>
-</div>
+<!-- ВАРИАНТЫ -->
+<section>
+  <div class="container">
+    <h2>Варианты <span class="accent">сотрудничества</span></h2>
+    <p class="sub">Четыре формата — от первой станции в своём кафе до эксклюзива на регион.</p>
+    <div class="grid4">
+      <div class="plan"><span class="tag">Формат 01</span><h3>Старт</h3><div class="share">80%</div>
+        <ul><li>3–5 станций</li><li>Свой район или свои заведения</li><li>Рассрочка 50/50</li></ul>
+        <a class="btn btn-ghost btn-sm" href="#zayavka">Консультация →</a></div>
+      <div class="plan hot"><span class="tag">Формат 02 · популярный</span><h3>Агент города</h3><div class="share">85%</div>
+        <ul><li>От 20 станций</li><li>Закреплённая территория</li><li>+ рекламный доход</li></ul>
+        <a class="btn btn-primary btn-sm" href="#zayavka">Консультация →</a></div>
+      <div class="plan"><span class="tag">Формат 03</span><h3>Мастер-агент</h3><div class="share">до 90%</div>
+        <ul><li>От 100 станций</li><li>Эксклюзив на регион</li><li>Право на суб-агентов</li></ul>
+        <a class="btn btn-ghost btn-sm" href="#zayavka">Консультация →</a></div>
+      <div class="plan"><span class="tag">Формат 04</span><h3>Для заведений</h3><div class="share">0 €</div>
+        <ul><li>Станция в ваш локал бесплатно</li><li>Доля с каждой аренды</li><li>Монтаж и сервис на нас</li></ul>
+        <a class="btn btn-ghost btn-sm" href="#zayavka">Консультация →</a></div>
+    </div>
+  </div>
 </section>
 
-<section style="padding:60px 0">
-<div class="container">
-<h2>Частые <span class="accent">вопросы</span></h2>
-<div style="max-width:820px;margin-top:30px">
-<h3 style="margin-top:24px">Нет опыта переговоров с заведениями — что делать?</h3>
-<p>На старте менеджер TeslaBox за руку обучит технике и скриптам переговоров. Агент и заведение делят доход — зарабатываете вместе. Топовым точкам с большим трафиком можно предложить входной бонус ради долгосрочной выгоды.</p>
-<h3 style="margin-top:24px">Как я зарабатываю на станциях?</h3>
-<p>Основной доход — арендные платежи с ваших станций. При росте парка добавляется рекламный доход: размещение партнёрских предложений в приложении и на экранах станций.</p>
-<h3 style="margin-top:24px">Туго с деньгами на закупку?</h3>
-<p>Есть оплата частями. Агентам, прошедшим проверку, — станции без предоплаты в пределах лимита: стоимость вычитается из ежемесячных доходов по договору.</p>
-<h3 style="margin-top:24px">Нет опыта управления?</h3>
-<p>Менеджер проведёт обучение 1-на-1 по продукту и бизнесу и поможет с операционкой. Цель TeslaBox — чтобы каждый партнёр зарабатывал.</p>
-<h3 style="margin-top:24px">Что с качеством оборудования?</h3>
-<p>Станции сертифицированы (CE), проходят испытания на перегрев, перегрузку и вандализм. Год гарантии и бесплатная замена пауэрбанков на весь срок сотрудничества.</p>
-</div>
-</div>
+<!-- ОБОРУДОВАНИЕ -->
+<section style="background:var(--bg-soft)">
+  <div class="container">
+    <h2>Оборудование и <span class="accent">цены для агентов</span></h2>
+    <p class="sub">Все станции сертифицированы, год гарантии, бесплатная замена пауэрбанков на весь срок сотрудничества.</p>
+    <div class="grid4">
+      <div class="prod"><div class="slots">6<small> слотов</small></div><p>Компактная — кафе, салоны, магазины у дома</p><div><span class="old">140 €</span> <span class="price">от 70 €</span></div></div>
+      <div class="prod"><div class="slots">8<small> слотов</small></div><p>Универсальная — большинство сценариев</p><div><span class="old">180 €</span> <span class="price">от 90 €</span></div></div>
+      <div class="prod"><div class="slots">12<small> слотов</small></div><p>Бары, клубы, фитнес — высокая ротация</p><div><span class="old">260 €</span> <span class="price">от 130 €</span></div></div>
+      <div class="prod"><div class="slots">48<small> + экран</small></div><p>ТЦ, вокзалы, аэропорт — максимальный трафик + реклама на экране</p><div><span class="price">1 900 €</span></div></div>
+    </div>
+    <p style="color:var(--muted);font-size:.85rem;margin-top:18px">* Цены демонстрационные — скопирована логика прайса Energy Monster: базовая цена и «акционная −50%».</p>
+  </div>
 </section>
 
-<section id="zayavka" style="padding:60px 0;background:var(--card,#141414)">
-<div class="container" style="text-align:center">
-<h2>Оставить <span class="accent">заявку</span></h2>
-<p style="margin:16px auto 28px;max-width:520px">Демо-страница: форма не подключена. В боевой версии здесь заявка (имя, телефон, город, планируемый объём) с отправкой менеджеру.</p>
-<a class="btn" href="mailto:sales@teslabox.rs">Написать: sales@teslabox.rs</a>
-</div>
+<!-- ПРОЦЕСС -->
+<section>
+  <div class="container">
+    <h2>Как <span class="accent">начать</span></h2>
+    <p class="sub">От заявки до первых выплат — пять шагов.</p>
+    <div class="steps">
+      <div class="step"><p>Заявка и консультация с менеджером</p></div>
+      <div class="step"><p>Договор и закупка станций</p></div>
+      <div class="step"><p>Подбор точек и монтаж</p></div>
+      <div class="step"><p>Запуск, обучение, личный кабинет</p></div>
+      <div class="step"><p>Еженедельные выплаты</p></div>
+    </div>
+  </div>
 </section>
 
-<footer><div class="container">
-<p>TESLABOX DOO BEOGRAD · демонстрационный макет партнёрской страницы · не индексируется, ссылок с сайта нет</p>
-</div></footer>
+<!-- FAQ -->
+<section style="background:var(--bg-soft)">
+  <div class="container">
+    <h2>Частые <span class="accent">вопросы</span></h2>
+    <p class="sub" style="margin-bottom:32px"></p>
+    <details><summary>Нет опыта переговоров с заведениями — что делать?</summary><p>На старте менеджер TeslaBox за руку обучит технике и скриптам переговоров. Агент и заведение делят доход — зарабатываете вместе. Топовым точкам с большим трафиком можно предложить входной бонус ради долгосрочной выгоды.</p></details>
+    <details><summary>Как я зарабатываю на станциях?</summary><p>Основной доход — арендные платежи с ваших станций. При росте парка добавляется рекламный доход: размещение партнёрских предложений в приложении и на экранах станций.</p></details>
+    <details><summary>Какая поддержка после подключения?</summary><p>Канальный менеджер остаётся вашим партнёром и консультантом. Поддержка агентов работает круглосуточно, техническая команда удалённо диагностирует и чинит станции.</p></details>
+    <details><summary>Туго с деньгами на закупку?</summary><p>Есть оплата частями: 50% при старте, остаток 12 платежей из выручки станций без процентов. Агентам, прошедшим проверку, — станции без предоплаты в пределах лимита.</p></details>
+    <details><summary>Нет опыта управления?</summary><p>Менеджер проведёт обучение 1-на-1 по продукту и бизнесу и поможет с операционкой. Цель TeslaBox — чтобы каждый партнёр зарабатывал.</p></details>
+    <details><summary>Что с качеством оборудования?</summary><p>Станции сертифицированы (CE), проходят испытания на перегрев, перегрузку и вандализм. Год гарантии и бесплатная замена пауэрбанков на весь срок сотрудничества.</p></details>
+  </div>
+</section>
+
+<!-- ЗАЯВКА -->
+<section id="zayavka">
+  <div class="container">
+    <h2>Оставить <span class="accent">заявку</span></h2>
+    <div class="form-stub" style="margin-top:32px">
+      <p>Демо-страница: форма не подключена. В боевой версии здесь заявка (имя, телефон, город, планируемый объём) с отправкой менеджеру.</p>
+      <a class="btn btn-primary" href="mailto:sales@teslabox.rs">Написать: sales@teslabox.rs</a>
+    </div>
+  </div>
+</section>
+
+<a class="float-cta" href="#zayavka" aria-label="Консультация"><svg viewBox="0 0 24 24" fill="#141414"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>Заявка</a>
+
+<footer>
+  <div class="container">TESLABOX DOO BEOGRAD · демонстрационный макет агентской страницы по модели Energy Monster · не индексируется, ссылок с сайта нет</div>
+</footer>
+
 </body>
 </html>
