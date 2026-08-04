@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Franšiza — TeslaBox | Powerbank biznis u vašem gradu</title>
-<meta name="description" content="Pokrenite powerbank-sharing biznis pod brendom TeslaBox: stanice, aplikacija, podrška mreže. Prihod vaših stanica pripada vama.">
+<meta name="robots" content="noindex,nofollow">
+<title>Postani agent — TeslaBox (demo)</title>
+<meta name="description" content="Agentski program TeslaBox — zaradi na iznajmljivanju powerbank-ova">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -33,7 +34,7 @@
   .logo b{color:var(--orange)}
   .demo-badge{font-size:.72rem;font-weight:600;color:#141414;background:var(--orange-hot);border-radius:6px;padding:2px 8px;letter-spacing:.06em}
 
-  .btn{display:inline-block;white-space:nowrap;padding:14px 32px;border-radius:999px;font-weight:700;font-size:1.1rem;text-decoration:none;transition:transform .15s ease, box-shadow .2s;cursor:pointer;border:none}
+  .btn{display:inline-block;padding:14px 32px;border-radius:999px;font-weight:700;font-size:1.1rem;text-decoration:none;transition:transform .15s ease, box-shadow .2s;cursor:pointer;border:none}
   .btn:focus-visible{outline:3px solid var(--orange-hot);outline-offset:3px}
   .btn-primary{background:linear-gradient(180deg,var(--orange-hot),var(--orange));color:#141414;box-shadow:0 6px 28px rgba(255,122,26,.35)}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(255,122,26,.5)}
@@ -138,112 +139,208 @@
 
   footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:.85rem;text-align:center}
 </style>
-<style>
-  .grid{display:grid;gap:20px}
-  .grid-4{grid-template-columns:repeat(4,1fr)}
-  .grid-2{grid-template-columns:repeat(2,1fr)}
-  @media(max-width:900px){.grid-4{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:560px){.grid-4,.grid-2{grid-template-columns:1fr}}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
-  .card h3{margin-bottom:10px}
-  .card p{color:var(--muted);font-size:.95rem}
-  .claim{background:linear-gradient(97deg,var(--orange) 0%,var(--orange-hot) 100%);color:#141414;padding:56px 0;transform:skewY(-1.2deg);margin:40px 0}
-  .claim > .container{transform:skewY(1.2deg)}
-  .claim h2{color:#141414;font-size:clamp(2rem,5vw,3.4rem)}
-  .claim p{max-width:680px;margin-top:10px;font-weight:500}
-  .steps{display:grid;gap:0;border-left:2px solid var(--line);margin-left:10px}
-  .step{position:relative;padding:0 0 34px 34px}
-  .step:last-child{padding-bottom:0}
-  .step::before{position:absolute;left:-19px;top:-2px;width:36px;height:36px;border-radius:50%;background:var(--bg-soft);border:2px solid var(--orange);color:var(--orange);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
-  .step:nth-child(1)::before{content:'1'}.step:nth-child(2)::before{content:'2'}.step:nth-child(3)::before{content:'3'}.step:nth-child(4)::before{content:'4'}
-  .step h3{margin-bottom:6px}
-  .step p{color:var(--muted);max-width:560px}
-  .faq details{border-bottom:1px solid var(--line);padding:18px 0}
-  .faq summary{cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:.02em;list-style:none;display:flex;justify-content:space-between;align-items:center}
-  .faq summary::after{content:'+';color:var(--orange);font-size:1.4rem;transition:transform .2s}
-  .faq details[open] summary::after{transform:rotate(45deg)}
-  .faq details p{color:var(--muted);margin-top:12px;max-width:720px}
-  .contact-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:40px;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
-  .contact-box .links{display:flex;flex-direction:column;gap:6px}
-  .contact-box a{color:var(--orange);text-decoration:none;font-weight:600}
-  footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-size:.85rem}
-  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.btn{transition:none}}
-</style>
 </head>
-
 <body>
-<header><div class="container nav">
-  <a class="logo" href="/">Tesla<b>Box</b></a>
-  <a class="btn btn-ghost btn-sm" href="#kontakt">Postani partner</a>
-</div></header>
 
-<section class="hero" style="padding:96px 0 64px">
+<header>
+  <div class="container nav">
+    <a class="logo" href="index.html"><svg viewBox="0 0 24 24" fill="#FF7A1A"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>Tesla<b>Box</b></a>
+    <span class="demo-badge">DEMO · NE OBJAVLJUJE SE</span>
+  </div>
+</header>
+
+<div class="promo-strip">🔥 <b>Akcija na nabavku:</b> prva uplata samo <b>50%</b> · od 30 stanica — <b>do 16 stanica na poklon</b></div>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="bolt-bg" viewBox="0 0 24 24" fill="#FF7A1A"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
   <div class="container">
-    <h1 style="max-width:900px">Franšiza <span class="accent">TeslaBox</span><br>powerbank biznis u vašem gradu</h1>
-    <p class="sub">Gotov model deljenja powerbank-ova: brend, aplikacija, stanice i podrška mreže. Vi birate lokacije i upravljate svojim parkom — mreža radi za vas.</p>
-    <a class="btn btn-primary" href="#kontakt">Zatražite uslove</a>
+    <h1 style="max-width:900px">Postani agent <span class="accent">TeslaBox</span><br>i zarađuj na iznajmljivanju powerbank-ova</h1>
+    <p class="lead">Ti dovodiš lokale i postavljaš stanice — mi dajemo opremu, aplikaciju, naplatu i podršku. Pouzdanost potvrđena sopstvenom mrežom stanica u Beogradu.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <a class="btn btn-primary" href="#prijava">Ostavi prijavu</a>
+      <a class="btn btn-ghost" href="#akcije">Pogledaj akcije</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>do 96%</b><span>prihoda ide agentu prve godine</span></div>
+      <div class="stat"><b>+2–6%</b><span>bonus za obim nabavke</span></div>
+      <div class="stat"><b>0 €</b><span>ulazna naknada</span></div>
+      <div class="stat"><b>50%</b><span>prva rata, ostatak iz prihoda</span></div>
+    </div>
   </div>
 </section>
 
-<div class="claim"><div class="container">
-  <h2>Prihod vaših stanica pripada vama</h2>
-  <p>Osnovno pravilo mreže: svaka stanica zarađuje za svog vlasnika. Bez preraspodele, bez tranzita novca preko tuđih računa.</p>
-</div></div>
+<!-- PREDNOSTI (photo cards, EM style) -->
+<section style="background:var(--bg-soft)">
+  <div class="container">
+    <h2>Prednosti <span class="accent">TeslaBox</span></h2>
+    <p class="sub">Agent zarađuje kada iza njega stoji sistem koji radi.</p>
+    <div class="grid2">
+      <div class="photo-card">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=70" alt="Lični nalog agenta sa grafikonima" loading="lazy" onerror="this.remove()">
+        <div class="cap">· Lični nalog: <b>prihod svake stanice uživo</b>, isplate nedeljno</div>
+      </div>
+      <div class="photo-card">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=70" alt="Kafić — lokacija za stanicu" loading="lazy" onerror="this.remove()">
+        <div class="cap">· Kafići, barovi, teretane — <b>stanica radi tamo gde se telefon prazni</b></div>
+      </div>
+      <div class="photo-card">
+        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=70" alt="Telefon korisnika" loading="lazy" onerror="this.remove()">
+        <div class="cap">· Sopstvena mreža u Beogradu — <b>živa statistika, ne obećanja</b></div>
+      </div>
+      <div class="photo-card">
+        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=70" alt="Partnerstvo" loading="lazy" onerror="this.remove()">
+        <div class="cap">· Dobar prinos, <b>mali ulog, brz povraćaj</b></div>
+      </div>
+    </div>
+  </div>
+</section>
 
+
+<!-- LIČNI NALOG -->
 <section>
   <div class="container">
-    <h2>Šta dobijate</h2>
-    <p class="sub">Sve što je potrebno za start — bez sopstvenog razvoja softvera i bez eksperimenata na svom trošku.</p>
-    <div class="grid grid-4">
-      <div class="card"><h3>Brend</h3><p>Prepoznatljiv brend TeslaBox i jedinstven izgled stanica — korisnik svuda vidi jednu mrežu.</p></div>
-      <div class="card"><h3>Aplikacija i platforma</h3><p>Gotova aplikacija za korisnike i panel za upravljanje parkom. Uzmi na jednoj, vrati na bilo kojoj stanici mreže.</p></div>
-      <div class="card"><h3>Oprema</h3><p>Stanice i powerbank-ovi po direktnim nabavnim cenama, sa isporukom i puštanjem u rad.</p></div>
-      <div class="card"><h3>Podrška</h3><p>Obuka, korisnička podrška mreže i pomoć u pregovorima sa lokacijama — od prvog dana.</p></div>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="container">
-    <h2>Kako se ulazi</h2>
-    <p class="sub">Četiri koraka od prijave do prve zarade.</p>
-    <div class="steps">
-      <div class="step"><h3>Prijava</h3><p>Pošaljete zahtev sa gradom ili regionom koji vas zanima.</p></div>
-      <div class="step"><h3>Razgovor i uslovi</h3><p>Prolazimo kroz model, teritoriju i ekonomiju — uslovi zavise od regiona i planiranog obima.</p></div>
-      <div class="step"><h3>Ugovor i oprema</h3><p>Potpisujemo ugovor, naručujemo stanice i pripremamo lansiranje.</p></div>
-      <div class="step"><h3>Start</h3><p>Instalacija na lokacijama, obuka tima — i vaše stanice počinju da rade u mreži TeslaBox.</p></div>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="container faq">
-    <h2>Česta pitanja</h2>
-    <details><summary>Kome pripada prihod stanica?</summary><p>Vlasniku stanice. Vaše stanice — vaš prihod, direktno, bez preraspodele kroz mrežu.</p></details>
-    <details><summary>Da li dobijam ekskluzivnu teritoriju?</summary><p>Teritorija se definiše ugovorom, u zavisnosti od regiona i planiranog broja stanica. Detalji — u razgovoru.</p></details>
-    <details><summary>Moram li da razvijam svoj softver?</summary><p>Ne. Aplikacija, platforma i podrška su deo mreže — vi se bavite lokacijama i svojim parkom stanica.</p></details>
-    <details><summary>Kolika je početna investicija?</summary><p>Zavisi od broja stanica i regiona. Pošaljite zahtev — pripremićemo obračun za vaš grad.</p></details>
-  </div>
-</section>
-
-<section id="kontakt" style="padding-top:0">
-  <div class="container">
-    <div class="contact-box">
+    <h2>Tvoj <span class="accent">lični nalog</span></h2>
+    <p class="sub">Sve svoje pare vidiš u realnom vremenu — po svakoj stanici, po svakom danu. Jedna montaža — stalan prihod: čim neko iznajmi powerbank, tebi kaplje.</p>
+    <div class="grid2" style="align-items:center">
+      <div class="dash" aria-label="Primer ličnog naloga agenta">
+        <div class="dash-top"><span class="ttl">TeslaBox · Nalog agenta</span><span class="live">● UŽIVO</span></div>
+        <div class="dash-sum"><b>14 380 RSD</b><span>▲ +18% ove nedelje</span></div>
+        <div class="dash-sub">Prihod za poslednjih 7 dana · isplata petkom</div>
+        <div class="bars" role="img" aria-label="Grafikon prihoda po danima">
+          <i style="height:38%"></i><i style="height:52%"></i><i style="height:44%"></i><i style="height:66%"></i><i style="height:58%"></i><i style="height:88%"></i><i class="today" style="height:74%"></i>
+        </div>
+        <div class="bar-lbls"><span>Pon</span><span>Uto</span><span>Sre</span><span>Čet</span><span>Pet</span><span>Sub</span><span>Ned</span></div>
+        <div class="st-rows">
+          <div class="st-row"><span class="nm"><span class="dot"></span>Stanica #214 <small>Kafić · Dorćol</small></span><span class="val">3 120 RSD</span></div>
+          <div class="st-row"><span class="nm"><span class="dot"></span>Stanica #219 <small>Teretana · Vračar</small></span><span class="val">2 640 RSD</span></div>
+          <div class="st-row"><span class="nm"><span class="dot"></span>Stanica #226 <small>Bar · Savamala</small></span><span class="val">4 890 RSD</span></div>
+        </div>
+      </div>
       <div>
-        <h2 style="font-size:clamp(1.6rem,3.5vw,2.4rem)">Zatražite uslove franšize</h2>
-        <p style="color:var(--muted);margin-top:8px;max-width:520px">Napišite nam grad i planirani obim — odgovaramo u roku od jednog radnog dana.</p>
-      </div>
-      <div class="links">
-        <a href="mailto:sales@teslabox.rs?subject=Fran%C5%A1iza%20TeslaBox">sales@teslabox.rs</a>
-        <a href="tel:+381605054030">+381 60 505 4030</a>
-        <a class="btn btn-primary btn-sm" style="margin-top:10px" href="mailto:sales@teslabox.rs?subject=Fran%C5%A1iza%20TeslaBox">Pošalji zahtev</a>
+        <ul class="ln-list">
+          <li><span class="pct">do 96%</span><br><b>podele prihoda prve godine</b> — baza 90% + bonus za obim. Vodeće u industriji.</li>
+          <li><b>Prihod u realnom vremenu.</b> Svaka renta se odmah vidi u nalogu — po stanici, po lokaciji, po danu. Nema tabela, nema čekanja izveštaja.</li>
+          <li><b>Jedna montaža — stalan povraćaj.</b> Neko iznajmi powerbank — ti imaš prihod. Lagan biznis, fleksibilno ulaganje, brz povraćaj uloga.</li>
+          <li><b>Isplate nedeljno,</b> automatski na tvoj račun. Istorija svih isplata u nalogu.</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<footer><div class="container">
-  TESLABOX DOO BEOGRAD · MB 22212168 · PIB 115856132 · Tikveška 19, 11042 Beograd · <a href="/" style="color:var(--muted)">teslabox.rs</a>
-</div></footer>
+<!-- KAKO ZARAĐUJEŠ -->
+<section>
+  <div class="container">
+    <h2>Kako agent <span class="accent">zarađuje</span></h2>
+    <p class="sub">Tri izvora prihoda — kao kod najvećih svetskih mreža.</p>
+    <div class="grid3">
+      <div class="card"><span class="big">do 90%</span><h3>Iznajmljivanje</h3><p>Glavni prihod — rente sa tvojih stanica. Baza 90% prihoda + bonus 2–6% u zavisnosti od veličine nabavljenog parka. Isplate nedeljno.</p></div>
+      <div class="card"><span class="big">+ €</span><h3>Reklama</h3><p>Kod većeg parka — prihod od reklame: partnerske ponude u aplikaciji i na ekranima velikih stanica.</p></div>
+      <div class="card"><span class="big">50/50</span><h3>Podela sa lokalom</h3><p>Deo za lokal određuješ sam. Top lokacijama sa velikim prometom možeš dati ulazni bonus — i obezbediti lokaciju na duže.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- AKCIJE -->
+<section id="akcije" style="background:var(--bg-soft)">
+  <div class="container">
+    <h2>Akcije na <span class="accent">nabavku</span></h2>
+    <p class="sub">Veći park — više stanica na poklon i veći tvoj procenat.</p>
+    <div class="grid3">
+      <div class="deal"><span class="ribbon">Start</span><div class="gift">30 <b>+ 16</b></div><p class="note">kupi 30 stanica — dobij 16 na poklon · ukupno 46</p></div>
+      <div class="deal"><span class="ribbon">Isplativo</span><div class="gift">40 <b>+ 27</b></div><p class="note">kupi 40 stanica — dobij 27 na poklon · ukupno 67</p></div>
+      <div class="deal"><span class="ribbon">Maksimum</span><div class="gift">100 <b>+ 100</b></div><p class="note">kupi 100 stanica — druga stotina na poklon</p></div>
+    </div>
+    <div class="grid2" style="margin-top:20px">
+      <div class="card"><h3>Rate bez kamate</h3><p>Prva uplata — 50% cene. Ostatak — 12 jednakih rata koje se automatski pokrivaju iz prihoda tvojih stanica. Bez kamate, bez kreditne istorije.</p></div>
+      <div class="card"><h3>Stanice bez avansa</h3><p>Provereni agenti dobijaju stanice besplatno u okviru limita: cena se odbija od mesečnih prihoda po ugovoru. Keš uopšte nije potreban.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATI -->
+<section>
+  <div class="container">
+    <h2>Formati <span class="accent">saradnje</span></h2>
+    <p class="sub">Četiri formata — od prve stanice u svom kafiću do ekskluzive za region.</p>
+    <div class="grid4">
+      <div class="plan"><span class="tag">Format 01</span><h3>Start</h3><div class="share">80%</div>
+        <ul><li>3–5 stanica</li><li>Svoj kraj ili svoji lokali</li><li>Rate 50/50</li></ul>
+        <a class="btn btn-ghost btn-sm" href="#prijava">Konsultacija →</a></div>
+      <div class="plan hot"><span class="tag">Format 02 · najtraženiji</span><h3>Agent grada</h3><div class="share">85%</div>
+        <ul><li>Od 20 stanica</li><li>Dodeljena teritorija</li><li>+ prihod od reklame</li></ul>
+        <a class="btn btn-primary btn-sm" href="#prijava">Konsultacija →</a></div>
+      <div class="plan"><span class="tag">Format 03</span><h3>Master-agent</h3><div class="share">do 90%</div>
+        <ul><li>Od 100 stanica</li><li>Ekskluziva za region</li><li>Pravo na sub-agente</li></ul>
+        <a class="btn btn-ghost btn-sm" href="#prijava">Konsultacija →</a></div>
+      <div class="plan"><span class="tag">Format 04</span><h3>Za lokale</h3><div class="share">0 €</div>
+        <ul><li>Stanica u vaš lokal besplatno</li><li>Deo od svake rente</li><li>Montaža i servis na nama</li></ul>
+        <a class="btn btn-ghost btn-sm" href="#prijava">Konsultacija →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- OPREMA -->
+<section style="background:var(--bg-soft)">
+  <div class="container">
+    <h2>Oprema i <span class="accent">cene za agente</span></h2>
+    <p class="sub">Sve stanice su sertifikovane, godinu dana garancije, besplatna zamena powerbank-ova tokom cele saradnje.</p>
+    <div class="grid4">
+      <div class="prod"><div class="slots">6<small> slotova</small></div><p>Kompaktna — kafići, saloni, prodavnice</p><div><span class="old">140 €</span> <span class="price">od 70 €</span></div></div>
+      <div class="prod"><div class="slots">8<small> slotova</small></div><p>Univerzalna — većina scenarija</p><div><span class="old">180 €</span> <span class="price">od 90 €</span></div></div>
+      <div class="prod"><div class="slots">12<small> slotova</small></div><p>Barovi, klubovi, teretane — velika rotacija</p><div><span class="old">260 €</span> <span class="price">od 130 €</span></div></div>
+      <div class="prod"><div class="slots">48<small> + ekran</small></div><p>TC, stanice, aerodrom — maksimalan promet + reklama na ekranu</p><div><span class="price">1 900 €</span></div></div>
+    </div>
+    <p style="color:var(--muted);font-size:.85rem;margin-top:18px">* Cene su demonstrativne — preuzeta je logika cenovnika Energy Monster: osnovna cena i akcijska −50%.</p>
+  </div>
+</section>
+
+<!-- KORACI -->
+<section>
+  <div class="container">
+    <h2>Kako da <span class="accent">počneš</span></h2>
+    <p class="sub">Od prijave do prvih isplata — pet koraka.</p>
+    <div class="steps">
+      <div class="step"><p>Prijava i konsultacija sa menadžerom</p></div>
+      <div class="step"><p>Ugovor i nabavka stanica</p></div>
+      <div class="step"><p>Izbor lokacija i montaža</p></div>
+      <div class="step"><p>Pokretanje, obuka, lični nalog</p></div>
+      <div class="step"><p>Nedeljne isplate</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--bg-soft)">
+  <div class="container">
+    <h2>Česta <span class="accent">pitanja</span></h2>
+    <p class="sub" style="margin-bottom:32px"></p>
+    <details><summary>Nemam iskustva u pregovorima sa lokalima — šta da radim?</summary><p>Na startu te menadžer TeslaBox-a lično obučava tehnici i skriptama pregovora. Agent i lokal dele prihod — zarađujete zajedno. Top lokacijama sa velikim prometom možeš ponuditi ulazni bonus radi dugoročne dobiti.</p></details>
+    <details><summary>Kako zarađujem na stanicama?</summary><p>Glavni prihod su rente sa tvojih stanica. Sa rastom parka dodaje se prihod od reklame: partnerske ponude u aplikaciji i na ekranima stanica.</p></details>
+    <details><summary>Kakva je podrška posle priključenja?</summary><p>Menadžer kanala ostaje tvoj partner i konsultant. Podrška za agente radi 24/7, tehnički tim daljinski dijagnostikuje i popravlja stanice.</p></details>
+    <details><summary>Nemam dovoljno novca za nabavku?</summary><p>Postoji plaćanje na rate: 50% na startu, ostatak 12 rata iz prihoda stanica bez kamate. Provereni agenti dobijaju stanice bez avansa u okviru limita.</p></details>
+    <details><summary>Nemam iskustva u vođenju biznisa?</summary><p>Menadžer sprovodi obuku 1-na-1 o proizvodu i biznisu i pomaže sa operativom. Cilj TeslaBox-a je da svaki partner zarađuje.</p></details>
+    <details><summary>Kakav je kvalitet opreme?</summary><p>Stanice su sertifikovane (CE), prolaze testove na pregrevanje, preopterećenje i vandalizam. Godinu dana garancije i besplatna zamena powerbank-ova tokom cele saradnje.</p></details>
+  </div>
+</section>
+
+<!-- PRIJAVA -->
+<section id="prijava">
+  <div class="container">
+    <h2>Ostavi <span class="accent">prijavu</span></h2>
+    <div class="form-stub" style="margin-top:32px">
+      <p>Demo stranica: forma nije povezana. U finalnoj verziji ovde je prijava (ime, telefon, grad, planirani obim) sa slanjem menadžeru.</p>
+      <a class="btn btn-primary" href="mailto:sales@teslabox.rs">Piši: sales@teslabox.rs</a>
+    </div>
+  </div>
+</section>
+
+<a class="float-cta" href="#prijava" aria-label="Prijava"><svg viewBox="0 0 24 24" fill="#141414"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>Prijava</a>
+
+<footer>
+  <div class="container">TESLABOX DOO BEOGRAD · demonstracioni maket agentske stranice po modelu Energy Monster · ne indeksira se, nema linkova sa sajta</div>
+</footer>
+
 </body>
 </html>
